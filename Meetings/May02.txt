@@ -1,0 +1,16 @@
+May 2, 2024
+
+To do's for next meeting: 
+
+- Add prediction based on the suffix, which uses the same production rule as for retrieving the stem.
+
+- Add production rule that attaches "sein" and "en" such that a new chunk is created that contains "seinen".
+
+- The chunks for the possessee should make clear that they are of type picture. 
+
+- Output the activation values for the picture chunks in the trace. 
+
+- Create a script that reads out these values.
+
+- Based on those values create a table with columns for time, activation value and picture chunks. 
+
