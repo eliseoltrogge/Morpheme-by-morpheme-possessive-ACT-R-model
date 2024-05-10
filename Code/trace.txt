@@ -1,0 +1,102 @@
+#|Warning: Productions request a value for the STEM slot in a request to the IMAGINAL buffer, but that slot is not used in other productions. |#
+#|Warning: Productions request a value for the SUFFIX slot in a request to the IMAGINAL buffer, but that slot is not used in other productions. |#
+#|Warning: Productions request a value for the WORD slot in a request to the IMAGINAL buffer, but that slot is not used in other productions. |#
+#|## Reload Complete ##|#
+     0.000   GOAL                   SET-BUFFER-CHUNK GOAL FIRST-GOAL NIL
+     0.000   PROCEDURAL             CONFLICT-RESOLUTION
+     0.050   PROCEDURAL             PRODUCTION-FIRED INPUT-MORPHEME
+     0.050   PROCEDURAL             CLEAR-BUFFER RETRIEVAL
+     0.050   DECLARATIVE            start-retrieval
+Chunk EN does not match
+Chunk SEIN matches
+Computing activation for chunk SEIN
+Computing base-level
+Starting with blc: 0.0
+Total base-level: 0.0
+Adding transient noise 0.0
+Adding permanent noise 0.0
+Chunk SEIN has an activation of: 0.0
+Chunk SEIN has the current best activation 0.0
+Chunk SEIN with activation 0.0 is the best
+     0.050   PROCEDURAL             CONFLICT-RESOLUTION
+     1.050   DECLARATIVE            RETRIEVED-CHUNK SEIN
+     1.050   DECLARATIVE            SET-BUFFER-CHUNK RETRIEVAL SEIN
+     1.050   PROCEDURAL             CONFLICT-RESOLUTION
+     1.100   PROCEDURAL             PRODUCTION-FIRED ENCODE-MORPHEME
+     1.100   PROCEDURAL             CLEAR-BUFFER RETRIEVAL
+     1.100   PROCEDURAL             CONFLICT-RESOLUTION
+     1.150   PROCEDURAL             PRODUCTION-FIRED RETRIEVE-ANTECEDENT
+     1.150   PROCEDURAL             CLEAR-BUFFER RETRIEVAL
+     1.150   DECLARATIVE            start-retrieval
+Chunk KNOPF does not match
+Chunk FLASCHE does not match
+Chunk SARAH does not match
+Chunk MARTIN matches
+Computing activation for chunk MARTIN
+Computing base-level
+Starting with blc: 0.0
+Total base-level: 0.0
+Adding transient noise 0.0
+Adding permanent noise 0.0
+Chunk MARTIN has an activation of: 0.0
+Chunk MARTIN has the current best activation 0.0
+Chunk MARTIN with activation 0.0 is the best
+     1.150   PROCEDURAL             CONFLICT-RESOLUTION
+     1.200   PROCEDURAL             PRODUCTION-FIRED PREDICT-POSSESSEE
+#|Warning: A retrieval event has been aborted by a new request |#
+     1.200   PROCEDURAL             CLEAR-BUFFER RETRIEVAL
+     1.200   DECLARATIVE            start-retrieval
+Chunk KNOPF does not match
+Chunk FLASCHE does not match
+No matching chunk found retrieval failure
+     1.200   PROCEDURAL             CONFLICT-RESOLUTION
+     2.200   DECLARATIVE            RETRIEVAL-FAILURE
+     2.200   PROCEDURAL             CONFLICT-RESOLUTION
+     2.250   PROCEDURAL             PRODUCTION-FIRED POSSESSEE-RETRIEVAL-FAILURE
+     2.250   PROCEDURAL             CLEAR-BUFFER RETRIEVAL
+     2.250   PROCEDURAL             CONFLICT-RESOLUTION
+     2.300   PROCEDURAL             PRODUCTION-FIRED INPUT-SUFFIX
+     2.300   PROCEDURAL             CLEAR-BUFFER RETRIEVAL
+     2.300   DECLARATIVE            start-retrieval
+Chunk EN matches
+Chunk SEIN does not match
+Computing activation for chunk EN
+Computing base-level
+Starting with blc: 0.0
+Total base-level: 0.0
+Adding transient noise 0.0
+Adding permanent noise 0.0
+Chunk EN has an activation of: 0.0
+Chunk EN has the current best activation 0.0
+Chunk EN with activation 0.0 is the best
+     2.300   PROCEDURAL             CONFLICT-RESOLUTION
+     3.300   DECLARATIVE            RETRIEVED-CHUNK EN
+     3.300   DECLARATIVE            SET-BUFFER-CHUNK RETRIEVAL EN
+     3.300   PROCEDURAL             CONFLICT-RESOLUTION
+     3.350   PROCEDURAL             PRODUCTION-FIRED ENCODE-SUFFIX
+     3.350   PROCEDURAL             CLEAR-BUFFER RETRIEVAL
+     3.350   PROCEDURAL             CONFLICT-RESOLUTION
+     3.400   PROCEDURAL             PRODUCTION-FIRED PREDICT-POSSESSEE
+     3.400   PROCEDURAL             CLEAR-BUFFER RETRIEVAL
+     3.400   DECLARATIVE            start-retrieval
+Chunk KNOPF matches
+Chunk FLASCHE does not match
+Computing activation for chunk KNOPF
+Computing base-level
+Starting with blc: 0.0
+Total base-level: 0.0
+Adding transient noise 0.0
+Adding permanent noise 0.0
+Chunk KNOPF has an activation of: 0.0
+Chunk KNOPF has the current best activation 0.0
+Chunk KNOPF with activation 0.0 is the best
+     3.400   PROCEDURAL             CONFLICT-RESOLUTION
+     3.450   PROCEDURAL             PRODUCTION-FIRED ATTACH
+     3.450   PROCEDURAL             CLEAR-BUFFER IMAGINAL
+     3.450   PROCEDURAL             CONFLICT-RESOLUTION
+     3.650   IMAGINAL               SET-BUFFER-CHUNK-FROM-SPEC IMAGINAL 
+     3.650   PROCEDURAL             CONFLICT-RESOLUTION
+     4.400   DECLARATIVE            RETRIEVED-CHUNK KNOPF
+     4.400   DECLARATIVE            SET-BUFFER-CHUNK RETRIEVAL KNOPF
+     4.400   PROCEDURAL             CONFLICT-RESOLUTION
+     4.400   ------                 Stopped because no events left to process
