@@ -1,0 +1,13 @@
+May 14, 2024
+
+To do's for next meeting: 
+
+- Add prediction based on the suffix, which uses the same production rule as for retrieving the stem
+
+- Add production rule that attaches "sein" and "en" such that it retrieves "seinen" based on the stem and suffix 
+
+- Output more information in the trace (look for the parameter in the documentation)
+
+- Create a script that reads out the activation values
+
+- Based on those values create a table with columns for time, activation value and picture chunks. 
