@@ -2,7 +2,8 @@
 
 (define-model morpheme
     
-(sgp :esc t :act t)
+(sgp :esc t :act t :ans .2 :bll 0.5 :ga 1 :lf 0.04 :rt -1.5 :mp 0.25 :ms 0 :md -1 :dat 0.05 :egs 0 :mas 3 :trace-detail high)
+;; ans recommended range is [.2;.8]
 
 (chunk-type morpheme morph morphtype gender-retr gender-pred gramcase animacy cat)
 (chunk-type word stem suffix word)
@@ -115,7 +116,7 @@
       cat            =cat
    =goal>
       ISA            process-morpheme
-      step           attach
+      step           input-suffix
    )
 
 ;; when there is a prediction failure, while retrieving a possessee, then proceed with the suffix. 
@@ -141,9 +142,15 @@
       morphtype      stem
       step           input-suffix
 ==>
-   +retrieval> ;; here all the other features such as gender, case etc should be added. 
+   +retrieval> ;; "en" is never retrieved since the base activation of "sein" is much higher
       ISA            morpheme
       morphtype      suffix
+      morph          en
+      gender-pred    masc
+      gramcase       acc 
+      animacy        inanim
+      cat            NP
+
    =goal>
       ISA            process-morpheme
       stem           =morph1
@@ -184,13 +191,12 @@
       ISA            process-morpheme 
       stem           =morph1
       morpheme       =morph2
-      step           attach
+      step           input-suffix
 ==> 
-   +imaginal>
+   +retrieval>
       ISA            word
       stem           =morph1
       suffix         =morph2
-      word           seinen
    =goal>
       ISA            process-morpheme
       step           done
