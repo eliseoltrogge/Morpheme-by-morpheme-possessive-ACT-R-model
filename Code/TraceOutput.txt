@@ -1,0 +1,567 @@
+?      0.000   GOAL                   SET-BUFFER-CHUNK GOAL FIRST-GOAL NIL
+     0.000   PROCEDURAL             CONFLICT-RESOLUTION
+     0.000   PROCEDURAL             PRODUCTION-SELECTED INPUT-MORPHEME
+     0.000   PROCEDURAL             BUFFER-READ-ACTION GOAL
+     0.050   PROCEDURAL             PRODUCTION-FIRED INPUT-MORPHEME
+     0.050   PROCEDURAL             MOD-BUFFER-CHUNK GOAL
+     0.050   PROCEDURAL             MODULE-REQUEST RETRIEVAL
+     0.050   PROCEDURAL             CLEAR-BUFFER RETRIEVAL
+     0.050   DECLARATIVE            start-retrieval
+Computing activation for chunk SEIN
+Computing base-level
+Starting with blc: 0.0
+Computing base-level from 1 references (0.000)
+  creation time: 0.000 decay: 0.5  Optimized-learning: T
+base-level value: 2.1910133
+Total base-level: 2.1910133
+Computing activation spreading from buffers
+  Spreading 1.0 from buffer GOAL chunk GOAL-CHUNK0
+    sources of activation are: (ENCODING-MORPHEME SEIN)
+    Spreading activation  0.0 from source ENCODING-MORPHEME level  0.5 times Sji 0.0
+    Spreading activation  1.1534264 from source SEIN level  0.5 times Sji 2.3068528
+Total spreading activation: 1.1534264
+Computing partial matching component
+  comparing slot MORPH
+  Requested: = SEIN  Chunk's slot value: SEIN
+  similarity: 0.0
+  effective similarity value is 0.0
+Total similarity score 0.0
+Adding transient noise 0.19400005
+Adding permanent noise 0.0
+Chunk SEIN has an activation of: 3.5384398
+Chunk SEIN has the current best activation 3.5384398
+Computing activation for chunk EN
+Computing base-level
+Starting with blc: 0.0
+Computing base-level from 1 references (0.000)
+  creation time: 0.000 decay: 0.5  Optimized-learning: T
+base-level value: 2.1910133
+Total base-level: 2.1910133
+Computing activation spreading from buffers
+  Spreading 1.0 from buffer GOAL chunk GOAL-CHUNK0
+    sources of activation are: (ENCODING-MORPHEME SEIN)
+    Spreading activation  0.0 from source ENCODING-MORPHEME level  0.5 times Sji 0.0
+    Spreading activation  0.0 from source SEIN level  0.5 times Sji 0.0
+Total spreading activation: 0.0
+Computing partial matching component
+  comparing slot MORPH
+  Requested: = SEIN  Chunk's slot value: EN
+  similarity: -1.0
+  effective similarity value is -0.25
+Total similarity score -0.25
+Adding transient noise 0.6849342
+Adding permanent noise 0.0
+Chunk EN has an activation of: 2.6259475
+Chunk SEIN with activation 3.5384398 is the best
+     0.050   PROCEDURAL             CONFLICT-RESOLUTION
+     0.051   DECLARATIVE            RETRIEVED-CHUNK SEIN
+     0.051   DECLARATIVE            SET-BUFFER-CHUNK RETRIEVAL SEIN
+     0.051   PROCEDURAL             CONFLICT-RESOLUTION
+     0.051   PROCEDURAL             PRODUCTION-SELECTED ENCODE-MORPHEME
+     0.051   PROCEDURAL             BUFFER-READ-ACTION GOAL
+     0.051   PROCEDURAL             BUFFER-READ-ACTION RETRIEVAL
+     0.101   PROCEDURAL             PRODUCTION-FIRED ENCODE-MORPHEME
+     0.101   PROCEDURAL             MOD-BUFFER-CHUNK GOAL
+     0.101   PROCEDURAL             CLEAR-BUFFER RETRIEVAL
+     0.101   PROCEDURAL             CONFLICT-RESOLUTION
+     0.101   PROCEDURAL             PRODUCTION-SELECTED RETRIEVE-ANTECEDENT
+     0.101   PROCEDURAL             BUFFER-READ-ACTION GOAL
+     0.151   PROCEDURAL             PRODUCTION-FIRED RETRIEVE-ANTECEDENT
+     0.151   PROCEDURAL             MOD-BUFFER-CHUNK GOAL
+     0.151   PROCEDURAL             MODULE-REQUEST RETRIEVAL
+     0.151   PROCEDURAL             CLEAR-BUFFER RETRIEVAL
+     0.151   DECLARATIVE            start-retrieval
+Computing activation for chunk MARTIN
+Computing base-level
+Starting with blc: 0.0
+Computing base-level from 1 references (0.000)
+  creation time: 0.000 decay: 0.5  Optimized-learning: T
+base-level value: 1.6383849
+Total base-level: 1.6383849
+Computing activation spreading from buffers
+  Spreading 1.0 from buffer GOAL chunk GOAL-CHUNK0
+    sources of activation are: (NP ANIM NOM NEU MASC STEM POSSESSEE-PREDICTION
+                                SEIN)
+    Spreading activation  0.13176124 from source NP level  0.125 times Sji 1.0540899
+    Spreading activation  0.2017132 from source ANIM level  0.125 times Sji 1.6137056
+    Spreading activation  0.2017132 from source NOM level  0.125 times Sji 1.6137056
+    Spreading activation  0.0 from source NEU level  0.125 times Sji 0.0
+    Spreading activation  0.17382026 from source MASC level  0.125 times Sji 1.390562
+    Spreading activation  0.0 from source STEM level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source POSSESSEE-PREDICTION level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source SEIN level  0.125 times Sji 0.0
+Total spreading activation: 0.7090079
+Computing partial matching component
+  comparing slot GENDER
+  Requested: = MASC  Chunk's slot value: MASC
+  similarity: 0.0
+  effective similarity value is 0.0
+  comparing slot GRAMCASE
+  Requested: = NOM  Chunk's slot value: NOM
+  similarity: 0.0
+  effective similarity value is 0.0
+  comparing slot ANIMACY
+  Requested: = ANIM  Chunk's slot value: ANIM
+  similarity: 0.0
+  effective similarity value is 0.0
+  comparing slot CAT
+  Requested: = NP  Chunk's slot value: NP
+  similarity: 0.0
+  effective similarity value is 0.0
+Total similarity score 0.0
+Adding transient noise 0.2867342
+Adding permanent noise 0.0
+Chunk MARTIN has an activation of: 2.634127
+Chunk MARTIN has the current best activation 2.634127
+Computing activation for chunk SARAH
+Computing base-level
+Starting with blc: 0.0
+Computing base-level from 1 references (0.000)
+  creation time: 0.000 decay: 0.5  Optimized-learning: T
+base-level value: 1.6383849
+Total base-level: 1.6383849
+Computing activation spreading from buffers
+  Spreading 1.0 from buffer GOAL chunk GOAL-CHUNK0
+    sources of activation are: (NP ANIM NOM NEU MASC STEM POSSESSEE-PREDICTION
+                                SEIN)
+    Spreading activation  0.13176124 from source NP level  0.125 times Sji 1.0540899
+    Spreading activation  0.2017132 from source ANIM level  0.125 times Sji 1.6137056
+    Spreading activation  0.2017132 from source NOM level  0.125 times Sji 1.6137056
+    Spreading activation  0.0 from source NEU level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source MASC level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source STEM level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source POSSESSEE-PREDICTION level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source SEIN level  0.125 times Sji 0.0
+Total spreading activation: 0.53518766
+Computing partial matching component
+  comparing slot GENDER
+  Requested: = MASC  Chunk's slot value: FEM
+  similarity: -1.0
+  effective similarity value is -0.25
+  comparing slot GRAMCASE
+  Requested: = NOM  Chunk's slot value: NOM
+  similarity: 0.0
+  effective similarity value is 0.0
+  comparing slot ANIMACY
+  Requested: = ANIM  Chunk's slot value: ANIM
+  similarity: 0.0
+  effective similarity value is 0.0
+  comparing slot CAT
+  Requested: = NP  Chunk's slot value: NP
+  similarity: 0.0
+  effective similarity value is 0.0
+Total similarity score -0.25
+Adding transient noise 0.024756664
+Adding permanent noise 0.0
+Chunk SARAH has an activation of: 1.9483292
+Computing activation for chunk FLASCHE
+Computing base-level
+Starting with blc: 0.0
+Computing base-level from 1 references (0.000)
+  creation time: 0.000 decay: 0.5  Optimized-learning: T
+base-level value: 1.6383849
+Total base-level: 1.6383849
+Computing activation spreading from buffers
+  Spreading 1.0 from buffer GOAL chunk GOAL-CHUNK0
+    sources of activation are: (NP ANIM NOM NEU MASC STEM POSSESSEE-PREDICTION
+                                SEIN)
+    Spreading activation  0.13176124 from source NP level  0.125 times Sji 1.0540899
+    Spreading activation  0.0 from source ANIM level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source NOM level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source NEU level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source MASC level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source STEM level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source POSSESSEE-PREDICTION level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source SEIN level  0.125 times Sji 0.0
+Total spreading activation: 0.13176124
+Computing partial matching component
+  comparing slot GENDER
+  Requested: = MASC  Chunk's slot value: FEM
+  similarity: -1.0
+  effective similarity value is -0.25
+  comparing slot GRAMCASE
+  Requested: = NOM  Chunk's slot value: ACC
+  similarity: -1.0
+  effective similarity value is -0.25
+  comparing slot ANIMACY
+  Requested: = ANIM  Chunk's slot value: INANIM
+  similarity: -1.0
+  effective similarity value is -0.25
+  comparing slot CAT
+  Requested: = NP  Chunk's slot value: NP
+  similarity: 0.0
+  effective similarity value is 0.0
+Total similarity score -0.75
+Adding transient noise 0.38603264
+Adding permanent noise 0.0
+Chunk FLASCHE has an activation of: 1.4061787
+Computing activation for chunk KNOPF
+Computing base-level
+Starting with blc: 0.0
+Computing base-level from 1 references (0.000)
+  creation time: 0.000 decay: 0.5  Optimized-learning: T
+base-level value: 1.6383849
+Total base-level: 1.6383849
+Computing activation spreading from buffers
+  Spreading 1.0 from buffer GOAL chunk GOAL-CHUNK0
+    sources of activation are: (NP ANIM NOM NEU MASC STEM POSSESSEE-PREDICTION
+                                SEIN)
+    Spreading activation  0.13176124 from source NP level  0.125 times Sji 1.0540899
+    Spreading activation  0.0 from source ANIM level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source NOM level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source NEU level  0.125 times Sji 0.0
+    Spreading activation  0.17382026 from source MASC level  0.125 times Sji 1.390562
+    Spreading activation  0.0 from source STEM level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source POSSESSEE-PREDICTION level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source SEIN level  0.125 times Sji 0.0
+Total spreading activation: 0.3055815
+Computing partial matching component
+  comparing slot GENDER
+  Requested: = MASC  Chunk's slot value: MASC
+  similarity: 0.0
+  effective similarity value is 0.0
+  comparing slot GRAMCASE
+  Requested: = NOM  Chunk's slot value: ACC
+  similarity: -1.0
+  effective similarity value is -0.25
+  comparing slot ANIMACY
+  Requested: = ANIM  Chunk's slot value: INANIM
+  similarity: -1.0
+  effective similarity value is -0.25
+  comparing slot CAT
+  Requested: = NP  Chunk's slot value: NP
+  similarity: 0.0
+  effective similarity value is 0.0
+Total similarity score -0.5
+Adding transient noise -0.21491194
+Adding permanent noise 0.0
+Chunk KNOPF has an activation of: 1.2290545
+Chunk MARTIN with activation 2.634127 is the best
+     0.151   PROCEDURAL             CONFLICT-RESOLUTION
+     0.151   PROCEDURAL             PRODUCTION-SELECTED PREDICT-POSSESSEE
+     0.151   PROCEDURAL             BUFFER-READ-ACTION GOAL
+     0.154   DECLARATIVE            RETRIEVED-CHUNK MARTIN
+     0.154   DECLARATIVE            SET-BUFFER-CHUNK RETRIEVAL MARTIN
+     0.201   PROCEDURAL             PRODUCTION-FIRED PREDICT-POSSESSEE
+     0.201   PROCEDURAL             MOD-BUFFER-CHUNK GOAL
+     0.201   PROCEDURAL             MODULE-REQUEST RETRIEVAL
+     0.201   PROCEDURAL             CLEAR-BUFFER RETRIEVAL
+     0.201   DECLARATIVE            start-retrieval
+Computing activation for chunk FLASCHE
+Computing base-level
+Starting with blc: 0.0
+Computing base-level from 1 references (0.000)
+  creation time: 0.000 decay: 0.5  Optimized-learning: T
+base-level value: 1.4953723
+Total base-level: 1.4953723
+Computing activation spreading from buffers
+  Spreading 1.0 from buffer GOAL chunk GOAL-CHUNK0
+    sources of activation are: (NP ANIM NOM NEU MASC STEM INPUT-SUFFIX SEIN)
+    Spreading activation  0.13176124 from source NP level  0.125 times Sji 1.0540899
+    Spreading activation  0.0 from source ANIM level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source NOM level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source NEU level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source MASC level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source STEM level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source INPUT-SUFFIX level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source SEIN level  0.125 times Sji 0.0
+Total spreading activation: 0.13176124
+Computing partial matching component
+  comparing slot TYPE
+  Requested: = PICTURE  Chunk's slot value: PICTURE
+  similarity: 0.0
+  effective similarity value is 0.0
+  comparing slot GENDER
+  Requested: = NEU  Chunk's slot value: FEM
+  similarity: -1.0
+  effective similarity value is -0.25
+  comparing slot GRAMCASE
+  Requested: = NOM  Chunk's slot value: ACC
+  similarity: -1.0
+  effective similarity value is -0.25
+  comparing slot ANIMACY
+  Requested: = ANIM  Chunk's slot value: INANIM
+  similarity: -1.0
+  effective similarity value is -0.25
+  comparing slot CAT
+  Requested: = NP  Chunk's slot value: NP
+  similarity: 0.0
+  effective similarity value is 0.0
+Total similarity score -0.75
+Adding transient noise -0.38519615
+Adding permanent noise 0.0
+Chunk FLASCHE has an activation of: 0.49193734
+Chunk FLASCHE has the current best activation 0.49193734
+Computing activation for chunk KNOPF
+Computing base-level
+Starting with blc: 0.0
+Computing base-level from 1 references (0.000)
+  creation time: 0.000 decay: 0.5  Optimized-learning: T
+base-level value: 1.4953723
+Total base-level: 1.4953723
+Computing activation spreading from buffers
+  Spreading 1.0 from buffer GOAL chunk GOAL-CHUNK0
+    sources of activation are: (NP ANIM NOM NEU MASC STEM INPUT-SUFFIX SEIN)
+    Spreading activation  0.13176124 from source NP level  0.125 times Sji 1.0540899
+    Spreading activation  0.0 from source ANIM level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source NOM level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source NEU level  0.125 times Sji 0.0
+    Spreading activation  0.17382026 from source MASC level  0.125 times Sji 1.390562
+    Spreading activation  0.0 from source STEM level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source INPUT-SUFFIX level  0.125 times Sji 0.0
+    Spreading activation  0.0 from source SEIN level  0.125 times Sji 0.0
+Total spreading activation: 0.3055815
+Computing partial matching component
+  comparing slot TYPE
+  Requested: = PICTURE  Chunk's slot value: PICTURE
+  similarity: 0.0
+  effective similarity value is 0.0
+  comparing slot GENDER
+  Requested: = NEU  Chunk's slot value: MASC
+  similarity: -1.0
+  effective similarity value is -0.25
+  comparing slot GRAMCASE
+  Requested: = NOM  Chunk's slot value: ACC
+  similarity: -1.0
+  effective similarity value is -0.25
+  comparing slot ANIMACY
+  Requested: = ANIM  Chunk's slot value: INANIM
+  similarity: -1.0
+  effective similarity value is -0.25
+  comparing slot CAT
+  Requested: = NP  Chunk's slot value: NP
+  similarity: 0.0
+  effective similarity value is 0.0
+Total similarity score -0.75
+Adding transient noise 0.3387767
+Adding permanent noise 0.0
+Chunk KNOPF has an activation of: 1.3897306
+Chunk KNOPF is now the current best with activation 1.3897306
+Chunk KNOPF with activation 1.3897306 is the best
+     0.201   PROCEDURAL             CONFLICT-RESOLUTION
+     0.201   PROCEDURAL             PRODUCTION-SELECTED INPUT-SUFFIX
+     0.201   PROCEDURAL             BUFFER-READ-ACTION GOAL
+     0.211   DECLARATIVE            RETRIEVED-CHUNK KNOPF
+     0.211   DECLARATIVE            SET-BUFFER-CHUNK RETRIEVAL KNOPF
+     0.251   PROCEDURAL             PRODUCTION-FIRED INPUT-SUFFIX
+     0.251   PROCEDURAL             MOD-BUFFER-CHUNK GOAL
+     0.251   PROCEDURAL             MODULE-REQUEST RETRIEVAL
+     0.251   PROCEDURAL             CLEAR-BUFFER RETRIEVAL
+     0.251   DECLARATIVE            start-retrieval
+Removing recently retrieved chunks:
+SEIN
+Computing activation for chunk EN
+Computing base-level
+Starting with blc: 0.0
+Computing base-level from 1 references (0.000)
+  creation time: 0.000 decay: 0.5  Optimized-learning: T
+base-level value: 1.3842983
+Total base-level: 1.3842983
+Computing activation spreading from buffers
+  Spreading 1.0 from buffer GOAL chunk GOAL-CHUNK0
+    sources of activation are: (SEIN NP ANIM NOM NEU MASC STEM ENCODING-SUFFIX
+                                SEIN)
+    Spreading activation  0.0 from source SEIN level  0.11111111 times Sji 0.0
+    Spreading activation  0.1171211 from source NP level  0.11111111 times Sji 1.0540899
+    Spreading activation  0.0 from source ANIM level  0.11111111 times Sji 0.0
+    Spreading activation  0.0 from source NOM level  0.11111111 times Sji 0.0
+    Spreading activation  0.0 from source NEU level  0.11111111 times Sji 0.0
+    Spreading activation  0.15450689 from source MASC level  0.11111111 times Sji 1.390562
+    Spreading activation  0.0 from source STEM level  0.11111111 times Sji 0.0
+    Spreading activation  0.0 from source ENCODING-SUFFIX level  0.11111111 times Sji 0.0
+    Spreading activation  0.0 from source SEIN level  0.11111111 times Sji 0.0
+Total spreading activation: 0.271628
+Computing partial matching component
+  comparing slot MORPHTYPE
+  Requested: = SUFFIX  Chunk's slot value: SUFFIX
+  similarity: 0.0
+  effective similarity value is 0.0
+  comparing slot MORPH
+  Requested: = EN  Chunk's slot value: EN
+  similarity: 0.0
+  effective similarity value is 0.0
+  comparing slot GENDER-PRED
+  Requested: = MASC  Chunk's slot value: MASC
+  similarity: 0.0
+  effective similarity value is 0.0
+  comparing slot GRAMCASE
+  Requested: = ACC  Chunk's slot value: ACC
+  similarity: 0.0
+  effective similarity value is 0.0
+  comparing slot ANIMACY
+  Requested: = INANIM  Chunk's slot value: INANIM
+  similarity: 0.0
+  effective similarity value is 0.0
+  comparing slot CAT
+  Requested: = NP  Chunk's slot value: NP
+  similarity: 0.0
+  effective similarity value is 0.0
+Total similarity score 0.0
+Adding transient noise -0.4236876
+Adding permanent noise 0.0
+Chunk EN has an activation of: 1.2322388
+Chunk EN has the current best activation 1.2322388
+Chunk EN with activation 1.2322388 is the best
+     0.251   PROCEDURAL             CONFLICT-RESOLUTION
+     0.263   DECLARATIVE            RETRIEVED-CHUNK EN
+     0.263   DECLARATIVE            SET-BUFFER-CHUNK RETRIEVAL EN
+     0.263   PROCEDURAL             CONFLICT-RESOLUTION
+     0.263   PROCEDURAL             PRODUCTION-SELECTED ENCODE-SUFFIX
+     0.263   PROCEDURAL             BUFFER-READ-ACTION GOAL
+     0.263   PROCEDURAL             BUFFER-READ-ACTION RETRIEVAL
+     0.313   PROCEDURAL             PRODUCTION-FIRED ENCODE-SUFFIX
+     0.313   PROCEDURAL             MOD-BUFFER-CHUNK GOAL
+     0.313   PROCEDURAL             CLEAR-BUFFER RETRIEVAL
+     0.313   PROCEDURAL             CONFLICT-RESOLUTION
+     0.313   PROCEDURAL             PRODUCTION-SELECTED PREDICT-POSSESSEE
+     0.313   PROCEDURAL             BUFFER-READ-ACTION GOAL
+     0.363   PROCEDURAL             PRODUCTION-FIRED PREDICT-POSSESSEE
+     0.363   PROCEDURAL             MOD-BUFFER-CHUNK GOAL
+     0.363   PROCEDURAL             MODULE-REQUEST RETRIEVAL
+     0.363   PROCEDURAL             CLEAR-BUFFER RETRIEVAL
+     0.363   DECLARATIVE            start-retrieval
+Computing activation for chunk FLASCHE
+Computing base-level
+Starting with blc: 0.0
+Computing base-level from 1 references (0.000)
+  creation time: 0.000 decay: 0.5  Optimized-learning: T
+base-level value: 1.1998234
+Total base-level: 1.1998234
+Computing activation spreading from buffers
+  Spreading 1.0 from buffer GOAL chunk GOAL-CHUNK0
+    sources of activation are: (SEIN NP INANIM ACC MASC MASC SUFFIX
+                                INPUT-SUFFIX EN)
+    Spreading activation  0.0 from source SEIN level  0.11111111 times Sji 0.0
+    Spreading activation  0.1171211 from source NP level  0.11111111 times Sji 1.0540899
+    Spreading activation  0.17930062 from source INANIM level  0.11111111 times Sji 1.6137056
+    Spreading activation  0.17930062 from source ACC level  0.11111111 times Sji 1.6137056
+    Spreading activation  0.0 from source MASC level  0.11111111 times Sji 0.0
+    Spreading activation  0.0 from source MASC level  0.11111111 times Sji 0.0
+    Spreading activation  0.0 from source SUFFIX level  0.11111111 times Sji 0.0
+    Spreading activation  0.0 from source INPUT-SUFFIX level  0.11111111 times Sji 0.0
+    Spreading activation  0.0 from source EN level  0.11111111 times Sji 0.0
+Total spreading activation: 0.4757223
+Computing partial matching component
+  comparing slot TYPE
+  Requested: = PICTURE  Chunk's slot value: PICTURE
+  similarity: 0.0
+  effective similarity value is 0.0
+  comparing slot GENDER
+  Requested: = MASC  Chunk's slot value: FEM
+  similarity: -1.0
+  effective similarity value is -0.25
+  comparing slot GRAMCASE
+  Requested: = ACC  Chunk's slot value: ACC
+  similarity: 0.0
+  effective similarity value is 0.0
+  comparing slot ANIMACY
+  Requested: = INANIM  Chunk's slot value: INANIM
+  similarity: 0.0
+  effective similarity value is 0.0
+  comparing slot CAT
+  Requested: = NP  Chunk's slot value: NP
+  similarity: 0.0
+  effective similarity value is 0.0
+Total similarity score -0.25
+Adding transient noise -0.004434913
+Adding permanent noise 0.0
+Chunk FLASCHE has an activation of: 1.4211107
+Chunk FLASCHE has the current best activation 1.4211107
+Computing activation for chunk KNOPF
+Computing base-level
+Starting with blc: 0.0
+Computing base-level from 2 references ()
+  creation time: 0.000 decay: 0.5  Optimized-learning: T
+base-level value: 1.8929706
+Total base-level: 1.8929706
+Computing activation spreading from buffers
+  Spreading 1.0 from buffer GOAL chunk GOAL-CHUNK0
+    sources of activation are: (SEIN NP INANIM ACC MASC MASC SUFFIX
+                                INPUT-SUFFIX EN)
+    Spreading activation  0.0 from source SEIN level  0.11111111 times Sji 0.0
+    Spreading activation  0.1171211 from source NP level  0.11111111 times Sji 1.0540899
+    Spreading activation  0.17930062 from source INANIM level  0.11111111 times Sji 1.6137056
+    Spreading activation  0.17930062 from source ACC level  0.11111111 times Sji 1.6137056
+    Spreading activation  0.15450689 from source MASC level  0.11111111 times Sji 1.390562
+    Spreading activation  0.15450689 from source MASC level  0.11111111 times Sji 1.390562
+    Spreading activation  0.0 from source SUFFIX level  0.11111111 times Sji 0.0
+    Spreading activation  0.0 from source INPUT-SUFFIX level  0.11111111 times Sji 0.0
+    Spreading activation  0.0 from source EN level  0.11111111 times Sji 0.0
+Total spreading activation: 0.78473616
+Computing partial matching component
+  comparing slot TYPE
+  Requested: = PICTURE  Chunk's slot value: PICTURE
+  similarity: 0.0
+  effective similarity value is 0.0
+  comparing slot GENDER
+  Requested: = MASC  Chunk's slot value: MASC
+  similarity: 0.0
+  effective similarity value is 0.0
+  comparing slot GRAMCASE
+  Requested: = ACC  Chunk's slot value: ACC
+  similarity: 0.0
+  effective similarity value is 0.0
+  comparing slot ANIMACY
+  Requested: = INANIM  Chunk's slot value: INANIM
+  similarity: 0.0
+  effective similarity value is 0.0
+  comparing slot CAT
+  Requested: = NP  Chunk's slot value: NP
+  similarity: 0.0
+  effective similarity value is 0.0
+Total similarity score 0.0
+Adding transient noise -0.94733906
+Adding permanent noise 0.0
+Chunk KNOPF has an activation of: 1.7303677
+Chunk KNOPF is now the current best with activation 1.7303677
+Chunk KNOPF with activation 1.7303677 is the best
+     0.363   PROCEDURAL             CONFLICT-RESOLUTION
+     0.363   PROCEDURAL             PRODUCTION-SELECTED ATTACH
+     0.363   PROCEDURAL             BUFFER-READ-ACTION GOAL
+     0.370   DECLARATIVE            RETRIEVED-CHUNK KNOPF
+     0.370   DECLARATIVE            SET-BUFFER-CHUNK RETRIEVAL KNOPF
+     0.413   PROCEDURAL             PRODUCTION-FIRED ATTACH
+     0.413   PROCEDURAL             MOD-BUFFER-CHUNK GOAL
+     0.413   PROCEDURAL             MODULE-REQUEST RETRIEVAL
+     0.413   PROCEDURAL             CLEAR-BUFFER RETRIEVAL
+     0.413   DECLARATIVE            start-retrieval
+Computing activation for chunk SEINEN
+Computing base-level
+Starting with blc: 0.0
+Computing base-level from 1 references (0.000)
+  creation time: 0.000 decay: 0.5  Optimized-learning: T
+base-level value: 1.1353011
+Total base-level: 1.1353011
+Computing activation spreading from buffers
+  Spreading 1.0 from buffer GOAL chunk GOAL-CHUNK0
+    sources of activation are: (SEIN NP INANIM ACC MASC MASC SUFFIX DONE EN)
+    Spreading activation  0.17930062 from source SEIN level  0.11111111 times Sji 1.6137056
+    Spreading activation  0.0 from source NP level  0.11111111 times Sji 0.0
+    Spreading activation  0.0 from source INANIM level  0.11111111 times Sji 0.0
+    Spreading activation  0.0 from source ACC level  0.11111111 times Sji 0.0
+    Spreading activation  0.0 from source MASC level  0.11111111 times Sji 0.0
+    Spreading activation  0.0 from source MASC level  0.11111111 times Sji 0.0
+    Spreading activation  0.0 from source SUFFIX level  0.11111111 times Sji 0.0
+    Spreading activation  0.0 from source DONE level  0.11111111 times Sji 0.0
+    Spreading activation  0.2112653 from source EN level  0.11111111 times Sji 1.9013877
+Total spreading activation: 0.39056593
+Computing partial matching component
+  comparing slot STEM
+  Requested: = SEIN  Chunk's slot value: SEIN
+  similarity: 0.0
+  effective similarity value is 0.0
+  comparing slot SUFFIX
+  Requested: = EN  Chunk's slot value: EN
+  similarity: 0.0
+  effective similarity value is 0.0
+Total similarity score 0.0
+Adding transient noise -0.027409991
+Adding permanent noise 0.0
+Chunk SEINEN has an activation of: 1.498457
+Chunk SEINEN has the current best activation 1.498457
+Chunk SEINEN with activation 1.498457 is the best
+     0.413   PROCEDURAL             CONFLICT-RESOLUTION
+     0.422   DECLARATIVE            RETRIEVED-CHUNK SEINEN
+     0.422   DECLARATIVE            SET-BUFFER-CHUNK RETRIEVAL SEINEN
+     0.422   PROCEDURAL             CONFLICT-RESOLUTION
+     0.422   ------                 Stopped because no events left to process

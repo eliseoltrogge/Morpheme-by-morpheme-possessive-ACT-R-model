@@ -24,7 +24,6 @@
    (Knopf ISA possessee name Knopf type picture gender masc gramcase acc animacy inanim cat NP)
    (first-goal ISA process-morpheme morpheme sein))
 
-
 ;; This production rule fires if the morpheme "sein" is put into the goal buffer and the step slot is empty.
 ;; which leads to retrieving the corresponding chunk from declaritive memory and adds the step slot to the goal buffer.
 (p input-morpheme
@@ -68,7 +67,7 @@
       gender-pred    =gend-pred 
       gramcase       =gramcase 
       animacy        =anim 
-      cat           =cat
+      cat            =cat
       step           antecedent-retrieval
    )
 
@@ -142,7 +141,7 @@
       morphtype      stem
       step           input-suffix
 ==>
-   +retrieval> ;; "en" is never retrieved since the base activation of "sein" is much higher
+   +retrieval> ;; without the"en" is never retrieved since the base activation of "sein" is much higher
       ISA            morpheme
       morphtype      suffix
       morph          en
@@ -150,6 +149,7 @@
       gramcase       acc 
       animacy        inanim
       cat            NP
+      :recently-retrieved nil
 
    =goal>
       ISA            process-morpheme
@@ -157,9 +157,11 @@
       step           encoding-suffix
    )
 
+
 (p encode-suffix
    =goal>
       ISA            process-morpheme  
+      morpheme       =morph1
       stem           =morph1
       step           encoding-suffix
    =retrieval> 
