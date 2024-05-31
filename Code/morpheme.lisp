@@ -15,16 +15,82 @@
 (add-dm 
    (stem)(neu)(nom)(anim)(NP)(suffix)(masc)(inanim)(fem)(acc)(picture)(encoding-morpheme)(encoding-stem)(encoding-suffix)(attach)
    (done)(input-suffix)(antecedent-retrieval)(possessee-prediction)
+ 
    ;; sein now includes the features relevant for retrieval and prediction
-   (sein ISA morpheme morph sein morphtype stem gender-retr masc gender-pred neu gramcase nom gramcase-pred acc animacy anim animacy-pred inanim
-      cat NP cat-pred NP)
-   (en ISA morpheme morph en morphtype suffix gender-pred masc gramcase-pred acc animacy-pred inanim cat-pred NP)
-   (seinen ISA word stem sein suffix en word seinen)
-   (Martin ISA antecedent name Martin gender masc gramcase nom animacy anim cat NP)
-   (Sarah ISA antecedent name Sarah gender fem gramcase nom animacy anim cat NP)
-   (Flasche ISA possessee name Flasche type picture gender fem gramcase acc animacy inanim cat NP)
-   (Knopf ISA possessee name Knopf type picture gender masc gramcase acc animacy inanim cat NP)
-   (first-goal ISA process-morpheme morpheme sein))
+   (sein 
+    ISA morpheme 
+    morph sein 
+    morphtype stem 
+    gender-retr masc 
+    gender-pred neu 
+    gramcase nom 
+    gramcase-pred acc 
+    animacy anim 
+    animacy-pred inanim
+    cat NP 
+    cat-pred NP
+    )
+ 
+   (en 
+    ISA morpheme 
+    morph en 
+    morphtype suffix 
+    gender-pred masc 
+    gramcase-pred acc 
+    animacy-pred inanim 
+    cat-pred NP
+    )
+ 
+   (seinen 
+    ISA word 
+    stem sein 
+    suffix en 
+    word seinen
+    )
+ 
+   (Martin 
+    ISA antecedent 
+    name Martin 
+    gender masc 
+    gramcase nom 
+    animacy anim 
+    cat NP
+    )
+ 
+   (Sarah 
+    ISA antecedent 
+    name Sarah 
+    gender fem 
+    gramcase nom 
+    animacy anim 
+    cat NP
+    )
+ 
+   (Flasche 
+    ISA possessee 
+    name Flasche 
+    type picture 
+    gender fem 
+    gramcase acc 
+    animacy inanim 
+    cat NP
+    )
+ 
+   (Knopf 
+    ISA possessee 
+    name Knopf 
+    type picture 
+    gender masc 
+    gramcase acc 
+    animacy inanim 
+    cat NP
+    )
+ 
+   (first-goal 
+    ISA process-morpheme 
+    morpheme sein
+    )
+ )
 
 ;; Input of sein.
 (p input-morpheme
