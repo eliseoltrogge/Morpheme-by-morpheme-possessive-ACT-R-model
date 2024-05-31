@@ -15,6 +15,7 @@
 (add-dm 
    (stem)(neu)(nom)(anim)(NP)(suffix)(masc)(inanim)(fem)(acc)(picture)(encoding-morpheme)(encoding-stem)(encoding-suffix)(attach)
    (done)(input-suffix)(antecedent-retrieval)(possessee-prediction)
+   ;; sein now includes the features relevant for retrieval and prediction
    (sein ISA morpheme morph sein morphtype stem gender-retr masc gender-pred neu gramcase nom gramcase-pred acc animacy anim animacy-pred inanim
       cat NP cat-pred NP)
    (en ISA morpheme morph en morphtype suffix gender-pred masc gramcase-pred acc animacy-pred inanim cat-pred NP)
@@ -25,7 +26,7 @@
    (Knopf ISA possessee name Knopf type picture gender masc gramcase acc animacy inanim cat NP)
    (first-goal ISA process-morpheme morpheme sein))
 
-
+;; Input of sein.
 (p input-morpheme
    =goal>
       ISA            process-morpheme
@@ -41,7 +42,7 @@
       step           encoding-morpheme
    )
 
-
+;; Encoding of sein.
 (p encode-morpheme
    =goal>
       ISA            process-morpheme  
@@ -106,7 +107,7 @@
 (p predict-possessee
    =goal>
       ISA            process-morpheme
-      morpheme       =morph 
+      ;; morpheme       =morph 
       gender-pred    =gend-pred 
       gramcase-pred  =gramcase-pred
       animacy-pred   =anim-pred
@@ -123,7 +124,7 @@
    +goal>   ;; this cannot be the solution, since it creates a new slot
       ISA            process-morpheme
       morphtype      suffix
-      morpheme       =morph 
+      ;; morpheme       =morph 
       step           input-suffix
    )
 
@@ -140,7 +141,7 @@
       step           input-suffix
    )
 
-
+;; Input of en. 
 (p input-suffix
    =goal>
       ISA            process-morpheme 
@@ -160,7 +161,7 @@
       step           encoding-suffix
    )
 
-
+;; Encoding of en. 
 (p encode-suffix
    =goal>
       ISA            process-morpheme  
