@@ -5,18 +5,19 @@
 (sgp :esc t :act t :ans .2 :bll 0.5 :ga 1 :lf 0.04 :rt -1.5 :mp 0.25 :ms 0 :md -1 :dat 0.05 :egs 0 :mas 3 :trace-detail high)
 ;; ans recommended range is [.2;.8]
 
-(chunk-type morpheme morph morphtype gender-retr gender-pred gramcase animacy cat)
+(chunk-type morpheme morph morphtype gender-retr gender-pred gramcase gramcase-pred animacy animacy-pred cat cat-pred)
 (chunk-type word stem suffix word)
 (chunk-type process-word stem suffix word step)
-(chunk-type process-morpheme morpheme step morphtype gender-retr gender-pred gramcase animacy cat antecedent stem)
+(chunk-type process-morpheme morpheme step morphtype gender-retr gender-pred gramcase gramcase-pred animacy animacy-pred cat cat-pred stem)
 (chunk-type antecedent name gender gramcase animacy cat)
 (chunk-type possessee name type gender gramcase animacy cat)
 
 (add-dm 
    (stem)(neu)(nom)(anim)(NP)(suffix)(masc)(inanim)(fem)(acc)(picture)(encoding-morpheme)(encoding-stem)(encoding-suffix)(attach)
    (done)(input-suffix)(antecedent-retrieval)(possessee-prediction)
-   (sein ISA morpheme morph sein morphtype stem gender-retr masc gender-pred neu gramcase nom animacy anim cat NP)
-   (en ISA morpheme morph en morphtype suffix gender-pred masc gramcase acc animacy inanim cat NP)
+   (sein ISA morpheme morph sein morphtype stem gender-retr masc gender-pred neu gramcase nom gramcase-pred acc animacy anim animacy-pred inanim
+      cat NP cat-pred NP)
+   (en ISA morpheme morph en morphtype suffix gender-pred masc gramcase-pred acc animacy-pred inanim cat-pred NP)
    (seinen ISA word stem sein suffix en word seinen)
    (Martin ISA antecedent name Martin gender masc gramcase nom animacy anim cat NP)
    (Sarah ISA antecedent name Sarah gender fem gramcase nom animacy anim cat NP)
@@ -24,8 +25,7 @@
    (Knopf ISA possessee name Knopf type picture gender masc gramcase acc animacy inanim cat NP)
    (first-goal ISA process-morpheme morpheme sein))
 
-;; This production rule fires if the morpheme "sein" is put into the goal buffer and the step slot is empty.
-;; which leads to retrieving the corresponding chunk from declaritive memory and adds the step slot to the goal buffer.
+
 (p input-morpheme
    =goal>
       ISA            process-morpheme
@@ -41,9 +41,7 @@
       step           encoding-morpheme
    )
 
-;; This production rule fires if the morpheme "sein" and the step "encoding-morpheme" is put into the goal buffer
-;; and there is a chunk in the retrieval buffer which matches the slot values for morph and morphtype
-;; It will then update the goal buffer such that it adds the morphtype and updates the step slot. 
+
 (p encode-morpheme
    =goal>
       ISA            process-morpheme  
@@ -54,20 +52,26 @@
       morph          =morph1
       morphtype      =morphtype
       gender-retr    =gend-retr 
-      gender-pred    =gend-pred
       gramcase       =gramcase 
       animacy        =anim 
       cat            =cat
+      gender-pred    =gend-pred 
+      gramcase-pred  =gramcase-pred 
+      animacy-pred   =animacy-pred 
+      cat-pred       =cat-pred 
 ==>
    =goal>
       ISA            process-morpheme  
       morpheme       =morph1
       morphtype      =morphtype 
       gender-retr    =gend-retr 
-      gender-pred    =gend-pred 
       gramcase       =gramcase 
       animacy        =anim 
       cat            =cat
+      gender-pred    =gend-pred 
+      gramcase-pred  =gramcase-pred 
+      animacy-pred   =animacy-pred 
+      cat-pred       =cat-pred 
       step           antecedent-retrieval
    )
 
@@ -76,9 +80,8 @@
    =goal>
       ISA            process-morpheme  
       morpheme       =morph1
-      morphtype      stem
+      morphtype      =morphtype
       gender-retr    =gend-retr 
-      gender-pred    =gend-pred 
       gramcase       =gramcase 
       animacy        =anim 
       cat            =cat
@@ -92,29 +95,35 @@
       cat            =cat
    =goal>
       ISA            process-morpheme
-      step           possessee-prediction
+      step           possessee-prediction ;; this is already considered as context during retrieval
    )
+
+
+;; All features from the retrieval are still in the goal buffer
 
 
 ;; Possessee prediction
 (p predict-possessee
    =goal>
-      ISA            process-morpheme  
+      ISA            process-morpheme
+      morpheme       =morph 
       gender-pred    =gend-pred 
-      gramcase       =gramcase 
-      animacy        =anim 
-      cat            =cat
+      gramcase-pred  =gramcase-pred
+      animacy-pred   =anim-pred
+      cat-pred       =cat-pred
       step           possessee-prediction
 ==>
    +retrieval>
       ISA            possessee
       type           picture
       gender         =gend-pred 
-      gramcase       =gramcase 
-      animacy        =anim 
-      cat            =cat
-   =goal>
+      gramcase       =gramcase-pred 
+      animacy        =anim-pred 
+      cat            =cat-pred
+   +goal>   ;; this cannot be the solution, since it creates a new slot
       ISA            process-morpheme
+      morphtype      suffix
+      morpheme       =morph 
       step           input-suffix
    )
 
@@ -131,29 +140,23 @@
       step           input-suffix
    )
 
-;; This production rule fires if the goal buffer matches the slots morpheme and step and morphtype is equal to stem.
-;; Then it will retrieve morpheme which has morphtype = suffix and updates the goal buffer with a chunk type called process-word
-;; in which the slots stem and step are filled. 
+
 (p input-suffix
    =goal>
-      ISA            process-morpheme  
-      morpheme       =morph1
-      morphtype      stem
+      ISA            process-morpheme 
+      morphtype      suffix
       step           input-suffix
+   =retrieval>
+      ISA            possessee
+      type           picture
 ==>
-   +retrieval> ;; without the"en" is never retrieved since the base activation of "sein" is much higher
+   +retrieval> 
       ISA            morpheme
       morphtype      suffix
-      morph          en
-      gender-pred    masc
-      gramcase       acc 
-      animacy        inanim
-      cat            NP
-      :recently-retrieved nil
+      ;;:recently-retrieved nil
 
    =goal>
       ISA            process-morpheme
-      stem           =morph1
       step           encoding-suffix
    )
 
@@ -161,44 +164,38 @@
 (p encode-suffix
    =goal>
       ISA            process-morpheme  
-      morpheme       =morph1
-      stem           =morph1
+      morphtype      suffix
       step           encoding-suffix
    =retrieval> 
       ISA            morpheme
       morph          =morph2
       morphtype      suffix 
       gender-pred    =gend-pred
-      gramcase       =gramcase 
-      animacy        =anim 
-      cat            =cat
+      gramcase       =gramcase-pred 
+      animacy        =anim-pred 
+      cat            =cat-pred
 ==>
    =goal>
       ISA            process-morpheme  
       morpheme       =morph2
       morphtype      suffix
       gender-pred    =gend-pred 
-      gramcase       =gramcase 
-      animacy        =anim 
-      cat            =cat
+      gramcase-pred  =gramcase-pred 
+      animacy-pred   =anim-pred
+      cat-pred       =cat-pred
       step           possessee-prediction
    )
 
-;; This production rule fires when the goal buffers matches in the slots stem and step
-;; and the retrieval buffer matches in the slots morph and morphtype. 
-;; Then it retrieves a chunk of type word that matches the stem and the suffix slot
-;; and updates the goal buffer, adding the filled slot suffix and the step slot. 
+;; this still needs to be connected such that it takes place after the second prediction production
 (p attach
    =goal>
       ISA            process-morpheme 
-      stem           =morph1
-      morpheme       =morph2
+      morpheme       en ;;does this makes sense?
       step           input-suffix
 ==> 
-   +retrieval>
+   +retrieval> ;;retrieve something that is a word and has suffix en
       ISA            word
-      stem           =morph1
-      suffix         =morph2
+      suffix         en
    =goal>
       ISA            process-morpheme
       step           done
