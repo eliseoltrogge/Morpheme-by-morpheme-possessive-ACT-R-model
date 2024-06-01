@@ -1,0 +1,7 @@
+May 31
+
+- Rename slots and values such that they make sense (gender-retr should be gender, gender-pred should be gender-possessee)
+- Only include retrieval cues that are relevant (for retrieving the antecedent it is gender, number, animacy)
+- Include retrieval check in the prediction rule 
+- Add additional rule for input the suffix after the prediction production (look for something that is a morpheme and a suffix)
+- Next Meeting June 11, 5pm
