@@ -65,9 +65,9 @@
       gender            =gender 
       animacy           =anim 
       number            =number
-      gender-possessee  nil 
-      animacy-possessee nil 
-      number-possessee  nil
+      gender-possessee  =gender-possessee 
+      animacy-possessee =animacy-possessee 
+      number-possessee  =num-possessee 
       step              antecedent-retrieval
    )
 
@@ -109,45 +109,9 @@
       step              antecedent-retrieval-check
 
 ==>
-   +retrieval>
-      ISA               morpheme
-      morph             =morph1
-      morphtype         =morphtype 
-      gender            =gender 
-      animacy           =anim 
-      number            =number
 
    =goal>
       ISA               process-morpheme
-      step              encode-morpheme-pred
-   )
-
-;; encode morpheme for prediction
-(p encode-morpheme-prediction
-   =retrieval>
-      ISA               morpheme
-      morph             =morph1
-      morphtype         =morphtype 
-      gender            =gender 
-      animacy           =anim 
-      number            =number
-      gender-possessee  =gender-possessee 
-      animacy-possessee =animacy-possessee 
-      number-possessee  =num-possessee 
-   =goal>
-      ISA               process-morpheme
-      morpheme          =morph1
-      morphtype         =morphtype
-      step              encode-morpheme-pred
-==>
-   =goal>
-      ISA               process-morpheme
-      gender            nil
-      animacy           nil
-      number            nil
-      gender-possessee  =gender-possessee 
-      animacy-possessee =animacy-possessee 
-      number-possessee  =num-possessee 
       step              possessee-prediction
    )
 

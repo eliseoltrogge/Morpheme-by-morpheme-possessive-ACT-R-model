@@ -1,0 +1,22 @@
+Problems with current script: 
+
+1. Currently, the input of the stem "sein" happens by retrieving it (p input-morpheme). By retrieving the morpheme all its corresponding cues are retrieved including the cues for antecedent retrieval (gender, animacy, number) and for picture prediction (gender-possessee, animacy-possessee, number-possessee). However, since first the antecedent retrieval takes place, I am eliminating the cues for the picture prediction from the goal buffer (p encode-morpheme-retrieval). This is to avoid spreading activation from the picture prediction cues, which will not lead to retrieving the correct antecedent (at least not most of the times). 
+
+Note: You can check that with the other lisp file I uploaded called "morpheme_alternative.lisp". In this script I have not eliminated the picture prediction cues from the goal buffer such that there is spreading activation from picture prediction cues during antecedent retrieval.
+
+After the antecedent retrieval, there needs to be a second retrieval of the morpheme "sein", because I somehow need to get the picture prediction cues into the goal buffer. Again, I am explicitely eliminating the antencendent retrieval cues after the retrieval of the morpheme "sein" (p encode-morpheme-prediction). Then the picture predicition takes place and can be done only based on the picture prediction cues. 
+
+This does not make sense cognitively. I think whenever "sein" is retrieved all the associated cues must be retrieved and put into the goal buffer. During our meeting you mentioned that there might be another way of managing the input of sein instead of retrieving the morpheme (and the cues). Could that be a solution? 
+
+2. Another problem concerns the attachment of the stem and suffix: 
+
+
+How I think the attachement should work: 
+After processing the stem, there should be a slot in the goal buffer that is filled with "sein". This is to mark that this specific morpheme had been processed. After the processing of the suffix, the goal buffer should have a slot filled with en indicating that the suffix had been processed. Then in the attachement production rule, a word could be retrieved that has a slot stem = sein and a slot sufffix = en. 
+
+Why that doesn't work in the current version: 
+The input of the suffix is again done by retrieving something that has a slot = suffix. However, when at the same time the goal buffer has slot stem = sein, the model will retrieve "sein" instead of "en" due to the spreading activation and the high baselevel activation. That is why I currently do not put a slot stem = sein in the goal buffer, but the attachement is then only based on the suffix (retrieve a word that has a slot suffix = en) which of course doesn't make sense when there is more than one word in the lexicon that has suffix = en. 
+
+Again, maybe that problem could be solved if the input of the suffix is done another way? 
+
+3. The third problem is a bit more minor: As discussed, I added the category slot for Martin, Sarah, Flasche and Knopf again to mark that they are DPs. We discussed that, because at the point of antecedent retrieval (p retrieve-antecedent) it otherwise sometimes retrieves the morpheme "sein" again. However, I only added the DP feature to the four nouns, but actually it should also be associated to "sein", because the retrieval cue should come from there during antecedent retrieval. Thus, I think there must be another way to indicate that something that is not a morpheme should be retrieved (at the antecedent retrieval step as well as at the antecendent retrieval check step). One way to implement it, is to say that something should be retrieved that has no step that is called morpheme, but I think that is also cogntively not plausible. What do you think?
