@@ -16,20 +16,35 @@
    (done)(input-suffix)(antecedent-retrieval)(possessee-prediction)(antecedent-retrieval-check)(DP)
    ;; sein now includes the features relevant for retrieval and prediction
  
-   ;; UP>> please format the code (DM and chunk-type) to make them readable)
-   (sein ISA morpheme 
+   ;; UP>> please format the code (DM and chunk-type) to make them readable; see the example below.
+   ;; I hope ACT-R works with newline formatting; if it doesn't then we'll have to think of some alternative.
+   (sein ISA morpheme
          morph sein
          morphtype stem
+         ;; antecedent features
          gender masc
-         gender-possessee neu
          animacy anim
-         animacy-possessee inanim
          number sg
+         ;; possessee/picture features
+         gender-possessee neu
+         animacy-possessee inanim
          number-possessee sg
          )
- 
-   (en ISA morpheme morph en morphtype suffix gender-possessee masc animacy-possessee inanim number-possessee sg)
-   (seinen ISA word stem sein suffix en word seinen)
+
+   (en ISA morpheme
+       morph en
+       morphtype suffix
+       gender-possessee masc
+       animacy-possessee inanim
+       number-possessee sg
+       )
+
+   (seinen ISA word
+           stem sein
+           suffix en
+           word seinen
+           )
+
    (Martin ISA antecedent name Martin gender masc animacy anim number sg cat DP)
    (Sarah ISA antecedent name Sarah gender fem animacy anim number sg cat DP)
    (Flasche ISA possessee name Flasche type picture gender fem animacy inanim number sg cat DP)
