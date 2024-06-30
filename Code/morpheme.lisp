@@ -15,8 +15,19 @@
    (stem)(neu)(anim)(sg)(suffix)(masc)(inanim)(fem)(picture)(encoding-morpheme)(encoding-stem)(encoding-suffix)(attach)(encode-morpheme-pred)
    (done)(input-suffix)(antecedent-retrieval)(possessee-prediction)(antecedent-retrieval-check)(DP)
    ;; sein now includes the features relevant for retrieval and prediction
-   (sein ISA morpheme morph sein morphtype stem gender masc gender-possessee neu animacy anim animacy-possessee inanim
-      number sg number-possessee sg)
+ 
+   ;; UP>> please format the code (DM and chunk-type) to make them readable)
+   (sein ISA morpheme 
+         morph sein
+         morphtype stem
+         gender masc
+         gender-possessee neu
+         animacy anim
+         animacy-possessee inanim
+         number sg
+         number-possessee sg
+         )
+ 
    (en ISA morpheme morph en morphtype suffix gender-possessee masc animacy-possessee inanim number-possessee sg)
    (seinen ISA word stem sein suffix en word seinen)
    (Martin ISA antecedent name Martin gender masc animacy anim number sg cat DP)
