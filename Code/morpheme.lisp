@@ -4,187 +4,98 @@
     
 (sgp :esc t :act t :ans .25 :bll 0.5 :ga 1 :lf 0.04 :rt -1.5 :mp 0.25 :ms 0 :md -1 :dat 0.05 :egs 0 :mas 3 :trace-detail high)
 
-(chunk-type morpheme morph morphtype gender gender-possessee animacy animacy-possessee number number-possessee)
+(chunk-type morpheme morph morphtype gender  animacy  number)
 (chunk-type word stem suffix word)
 (chunk-type process-word stem suffix word step)
-(chunk-type process-morpheme morpheme step morphtype gender gender-possessee animacy animacy-possessee number number-possessee stem)
-(chunk-type antecedent name gender animacy number cat)
-(chunk-type possessee name type gender animacy number cat)
+(chunk-type process-morpheme morpheme step morphtype gender animacy number stem)
+(chunk-type noun name gender animacy number cat)
+(chunk-type picture name type gender animacy number cat)
 
 (add-dm 
-   (stem)(neu)(anim)(sg)(suffix)(masc)(inanim)(fem)(picture)(encoding-morpheme)(encoding-stem)(encoding-suffix)(attach)(encode-morpheme-pred)
+   (stem)(neu)(anim)(sg)(suffix)(masc)(inanim)(fem)(picture)(encoding-stem)(encoding-suffix)(attach)(encode-morpheme-pred)
    (done)(input-suffix)(antecedent-retrieval)(possessee-prediction)(antecedent-retrieval-check)(DP)
-   ;; sein now includes the features relevant for retrieval and prediction
-   (sein ISA morpheme morph sein morphtype stem gender masc gender-possessee neu animacy anim animacy-possessee inanim
-      number sg number-possessee sg)
-   (en ISA morpheme morph en morphtype suffix gender-possessee masc animacy-possessee inanim number-possessee sg)
+   (sein ISA morpheme morph sein morphtype stem gender masc animacy anim number sg)
+   (en ISA morpheme morph en morphtype suffix)
    (seinen ISA word stem sein suffix en word seinen)
-   (Martin ISA antecedent name Martin gender masc animacy anim number sg cat DP)
-   (Sarah ISA antecedent name Sarah gender fem animacy anim number sg cat DP)
-   (Flasche ISA possessee name Flasche type picture gender fem animacy inanim number sg cat DP)
-   (Knopf ISA possessee name Knopf type picture gender masc animacy inanim number sg cat DP)
-   (first-goal ISA process-morpheme morpheme sein))
+   (Martin ISA noun name Martin gender masc animacy anim number sg cat DP)
+   (Sarah ISA noun name Sarah gender fem animacy anim number sg cat DP)
+   (Flasche ISA picture name Flasche type picture gender fem animacy inanim number sg cat DP)
+   (Knopf ISA picture name Knopf type picture gender masc animacy inanim number sg cat DP)
+   (first-goal ISA process-morpheme morpheme sein morphtype stem)
+   )
 
 ;; Input of sein.
 (p input-morpheme
    =goal>
       ISA               process-morpheme
       morpheme          =morph1
+      morphtype         =morphtype
       step              nil
 ==>
-   +retrieval>
-      ISA               morpheme
-      morph             =morph1
-   =goal>
-      ISA               process-morpheme 
-      morpheme          =morph1
-      step              encoding-morpheme
-   )
-
-;; Encoding of sein.
-(p encode-morpheme-retrieval
-   =goal>
-      ISA               process-morpheme  
-      morpheme          =morph1
-      step              encoding-morpheme
-   =retrieval> 
+   +imaginal> ;; this is a hack to input the stem.
       ISA               morpheme
       morph             =morph1
       morphtype         =morphtype
-      gender            =gender 
-      animacy           =anim 
-      number            =number
-      gender-possessee  =gender-possessee 
-      animacy-possessee =animacy-possessee 
-      number-possessee  =num-possessee 
-==>
-   =goal>
-      ISA               process-morpheme  
-      morpheme          =morph1
-      morphtype         =morphtype 
-      gender            =gender 
-      animacy           =anim 
-      number            =number
-      gender-possessee  nil 
-      animacy-possessee nil 
-      number-possessee  nil
+      gender            masc ; not sure whether it is fair to have the features explicitely stated here. 
+      animacy           anim
+      number            sg
+   +goal>                     ;; I am removing here the slots and their corresponding values of morpheme and morphtype, 
+                              ;; because otherwise spreading activation would yield incorrect retrievals. 
+      ISA               process-morpheme 
+      gender            masc 
+      animacy           anim
+      number            sg
       step              antecedent-retrieval
    )
 
-;; Antecedent retrieval
+;; Antecedent retrieval. 
 (p retrieve-antecedent
    =goal>
-      ISA               process-morpheme
-      morpheme          =morph1
+      ISA               process-morpheme  
+      step              antecedent-retrieval
+   =imaginal> 
+      ISA               morpheme
+      morph             =morph1
       morphtype         =morphtype
       gender            =gender 
       animacy           =anim 
       number            =number
-      step              antecedent-retrieval
 ==>
    +retrieval>
-      ISA               antecedent
-      cat               DP ;; work-around, the cue must come form the stem, but this does not prevent retrieving the morpheme "sein" then
+      ISA               noun
+      cat               DP 
       gender            =gender 
       animacy           =anim 
       number            =number
-      :recently-retrieved nil 
    =goal> 
       ISA               process-morpheme
       step              antecedent-retrieval-check 
    )
 
-;; check whether retrieval is done
-(p retrieve-antecedent-check
+;; Check whether retrieval is done correctly 
+;; and if so predict picture. 
+(p predict-picture-stem
    =retrieval>
-      ISA               antecedent
+      ISA               noun
       cat               DP
       gender            =gender 
       animacy           =anim 
       number            =number
    =goal>
       ISA               process-morpheme
-      morpheme          =morph1
-      morphtype         =morphtype
       step              antecedent-retrieval-check
 
-==>
+==> ;; predict picture
    +retrieval>
-      ISA               morpheme
-      morph             =morph1
-      morphtype         =morphtype 
-      gender            =gender 
-      animacy           =anim 
-      number            =number
-
-   =goal>
-      ISA               process-morpheme
-      step              encode-morpheme-pred
-   )
-
-;; encode morpheme for prediction
-(p encode-morpheme-prediction
-   =retrieval>
-      ISA               morpheme
-      morph             =morph1
-      morphtype         =morphtype 
-      gender            =gender 
-      animacy           =anim 
-      number            =number
-      gender-possessee  =gender-possessee 
-      animacy-possessee =animacy-possessee 
-      number-possessee  =num-possessee 
-   =goal>
-      ISA               process-morpheme
-      morpheme          =morph1
-      morphtype         =morphtype
-      step              encode-morpheme-pred
-==>
-   =goal>
-      ISA               process-morpheme
-      gender            nil
-      animacy           nil
-      number            nil
-      gender-possessee  =gender-possessee 
-      animacy-possessee =animacy-possessee 
-      number-possessee  =num-possessee 
-      step              possessee-prediction
-   )
-
-
-;; Possessee prediction
-(p predict-picture
-   =goal>
-      ISA               process-morpheme
-      morpheme          =morph1
-      morphtype         =morphtype
-      gender-possessee  =gender-possessee 
-      animacy-possessee =animacy-possessee 
-      number-possessee  =num-possessee 
-      step              possessee-prediction
-==>
-   +retrieval>
-      ISA               possessee
+      ISA               picture
       type              picture
-      gender            =gender-possessee 
-      animacy           =animacy-possessee 
-      number            =num-possessee
-   =goal>   
-      ISA               process-morpheme
-      morphtype         =morphtype
-      step              input-suffix
-   )
+      gender            neu
+      animacy           inanim
+      number            sg
 
-;; when there is a prediction failure, while retrieving a picture, then proceed with the suffix. 
-(p picture-retrieval-failure
-   =goal>
-      ISA               process-morpheme  
-      step              attach
-   ?retrieval>
-      buffer            failure
-==>
    =goal>
       ISA               process-morpheme
+      stem              sein ;; not sure how to put the stem here. 
       step              input-suffix
    )
 
@@ -192,49 +103,44 @@
 (p input-suffix
    =goal>
       ISA               process-morpheme 
-      morphtype         stem
+      stem              sein
       step              input-suffix
    =retrieval>
-      ISA               possessee
+      ISA               picture
       type              picture
 ==>
-   +retrieval> 
+   +imaginal> 
       ISA               morpheme
+      morph             en
       morphtype         suffix
-      ;;:recently-retrieved nil
+   =goal>
+      ISA               process-morpheme
+      morpheme          en
+      morphtype         suffix
+      gender            nil
+      animacy           nil
+      number            nil
+      step              possessee-prediction
+   )
+
+(p picture-prediction-suffix
+   =goal>
+      ISA               process-morpheme
+      morpheme          =morph2
+      morphtype         suffix
+      step              possessee-prediction
+
+==> ;; predict picture
+   +retrieval>
+      ISA               picture
+      type              picture
+      gender            masc
+      animacy           inanim
+      number            sg
 
    =goal>
       ISA               process-morpheme
-      morphtype         suffix
-      morpheme          nil
-      gender-possessee  nil 
-      animacy-possessee nil 
-      number-possessee  nil
-      step              encoding-suffix
-   )
-
-;; Encoding of en. 
-(p encode-suffix
-   =goal>
-      ISA               process-morpheme  
-      morphtype         suffix
-      step              encoding-suffix
-   =retrieval> 
-      ISA               morpheme
-      morph             =morph2
-      morphtype         suffix 
-      gender-possessee  =gender-possessee
-      animacy-possessee =animacy-possessee 
-      number-possessee  =num-possessee
-==>
-   =goal>
-      ISA               process-morpheme  
-      morpheme          =morph2
-      morphtype         suffix
-      gender-possessee  =gender-possessee  
-      animacy-possessee =animacy-possessee
-      number-possessee  =num-possessee
-      step              possessee-prediction
+      step              input-suffix
    )
 
 ;; attach stem and suffix
@@ -242,12 +148,13 @@
    =goal>
       ISA               process-morpheme 
       morphtype         suffix 
+      stem              =morph1
       morpheme          =morph2
       step              input-suffix
 ==> 
-   +retrieval> ;;retrieve something that is a word and has suffix en
+   +retrieval> 
       ISA               word
-      ;;stem              =morph1 how to put "sein" here?
+      stem              =morph1 
       suffix            =morph2
    =goal>
       ISA               process-morpheme

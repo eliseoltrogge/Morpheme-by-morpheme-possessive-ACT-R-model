@@ -1,0 +1,14 @@
+September 21: Updates
+
+- The input of the stem and the suffix happens now using the imaginal buffer. 
+PROBLEMS: The imaginal just creates the chunk for e.g. the stem "sein" and "knows" its corresponding features. This means, later there must new production rules for each of the different stems and suffixes and also step slots, so the model knows how to combine them. 
+
+- Prediction cues are implemented in production rule itself, so that the cues are not associated anymore with the chunk. This prevents the spreading activation problem that we had previously when cues for prediction and retrieval differed. 
+
+- Rule for picture prediction based on the stem now includes antecedent retrieval check (previously we had two seperate productions).
+
+- No seperate rule for encoding of morpheme anymore. 
+
+- Attaching of stem and suffix now works via retrieval by putting the stem in the goal buffer after it is processed. 
+PROBLEM: Is this cognitively plausible?
+
