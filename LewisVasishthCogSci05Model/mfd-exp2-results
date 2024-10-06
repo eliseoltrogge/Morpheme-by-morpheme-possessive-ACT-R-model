@@ -1,0 +1,8 @@
+"McElree, Foraker & Dyer (2003) Exp. 2"
+"YES"
+"mfd-exp2.pdf"
+condition, model, data
+"NO",138.000, 0.000
+"OR",187.000,85.000
+"PP-OR",204.000,85.000
+"OR-SR",209.000,85.000

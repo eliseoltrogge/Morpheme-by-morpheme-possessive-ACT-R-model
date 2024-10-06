@@ -1,0 +1,3 @@
+(comp jisne :id that-subj :cat Csubj)
+
+(det us :id that-acc :cat det)

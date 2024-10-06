@@ -1,0 +1,10 @@
+"SC-RC vs. RC-SC"
+"NO"
+"sc-rc-v-rc-sc.pdf"
+condition, model, data
+"sc-rc:embedded-verb",290.000, 0.000
+"sc-rc:middle-verb",210.000, 0.000
+"sc-rc:main-verb",238.000, 0.000
+"rc-sc:embedded-verb",163.000, 0.000
+"rc-sc:middle-verb",401.000, 0.000
+"rc-sc:main-verb",238.000, 0.000

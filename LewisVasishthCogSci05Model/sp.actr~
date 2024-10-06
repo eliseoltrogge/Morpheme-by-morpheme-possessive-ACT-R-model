@@ -1,0 +1,156 @@
+;;;-*-LISP-*-
+
+;; ===================================================================
+;;    ACT-R Sentence Parsing Model
+;;      
+;;       This model is described in the Cognitive Science article
+;;       Lewis & Vasisth (2004).  
+;; 
+;;    Version 2.0
+;;    June 24 2004
+;; ===================================================================
+
+(clear-all)
+(pm-reset)
+
+
+(defvar *lang*)
+
+(setf *lang* 'english)
+
+;(setf *lang* 'dutch)
+
+  
+;; The new WM buffers for creating constituents.
+
+(defvar *PP* nil)
+(defvar *IP* nil)
+(defvar *CP* nil)
+(defvar *DP* nil)
+(defvar *NP* nil)
+(defvar *VP* nil)  
+(defvar *VP2* nil)  
+(defvar *AdjP* nil)  
+(defvar *lex* nil)  
+
+
+;; The new lexical retrieval buffer
+
+(defvar *lex-retrieval* nil)
+
+
+;; The *buffer-keys* variable is set automatically by code in "patches".
+
+(defvar *buffer-keys* nil)
+
+
+;; For mapping next-goal-categories
+
+(defvar *goal-cat-mappings* nil)
+
+
+;; Hold the sentences for the model to parse
+
+(defvar *sentences*)
+
+;; NOTE:  The buffer variables should be reset automatically by
+;; ACT-R clear and reset functions, but they are not.  This is a bug.
+
+(setf *PP* nil)
+(setf *IP* nil)
+(setf *CP* nil)
+(setf *DP* nil)
+(setf *NP* nil)
+(setf *VP* nil)  
+(setf *VP2* nil)  
+(setf *AdjP* nil)  
+(setf *lex* nil)  
+
+(setf *lex-retrieval* nil)  
+
+(setf *sentences* nil)
+(setf *buffer-keys* nil)
+
+(setf *retrieval-buffers* '(retrieval))
+
+
+(setf *goal-cat-mappings* '((next-*done* . *done*)
+			    (next-vp-goal . vp-goal)
+			    (next-np-goal . np-goal)
+			    (next-vp-embedded-goal . vp-embedded-goal)
+			    (next-vp-gapped-goal . vp-gapped-goal)))
+
+
+(defun set-goal-category (goal-chunk next-goal)
+  (let ((new-g (cdr (assoc next-goal *goal-cat-mappings*))))
+    (when (not new-g)
+	(signal-warn "***** WARNING:  Goal-category is being set to nil. Did not have a mapping for ~A." next-goal))
+    (eval `(modWME ,goal-chunk goal-cat ,new-g)) 
+    )
+  )
+
+
+(defun set-next-goal-category (c next-goal)
+    (let ((new-g (car (rassoc next-goal *goal-cat-mappings*))))
+
+    (when (not new-g)
+      (signal-warn  "***** WARNING:  Goal-category is being set to
+      nil. Did not have a mapping for ~A." next-goal)) 
+
+    (when *verbose* (format t "
+
+Setting next-goal of ~A to ~A.
+
+" (wme-name c) new-g))
+    (eval `(modWME ,c next-goal ,new-g)) 
+    )
+)
+
+
+
+(define-buffer PPb *PP*)  
+(define-buffer IPb *IP*)  
+(define-buffer DPb *DP*)  
+(define-buffer NPb *NP*)  
+(define-buffer VPb *VP*)  
+(define-buffer VP2b *VP2*)  
+(define-buffer CPb *CP*)
+(define-buffer AdjPb *AdjP*)
+(define-buffer lex *lex*)
+
+
+(define-retrieval-buffer lex-retrieval *lex-retrieval*)
+
+
+
+;; All the component files of the model.  We should at some point
+;; modularize this with respect to different languages.
+
+(load-model "patches.actr")
+
+(load-model "lex-support.actr")
+
+(load-model "interface-code.actr")
+
+(load-model "chunk-types.actr")
+
+(load-model "constants.actr")
+
+(load-model "productions.actr")
+  
+(load-model "test-sentences.actr")
+
+(setf *sentences* (list *simple*))
+
+(load-model "commands.actr")
+
+(load-model "chunks.actr")
+
+
+;; (case *lang*
+;;   ((english) (load-model "productions.actr")
+;;              (load-model "chunks.actr"))
+;;   ((dutch)   (load-model "dutch-productions.actr")
+;;              (load-model "dutch-chunk.actr"))
+;;   )
+

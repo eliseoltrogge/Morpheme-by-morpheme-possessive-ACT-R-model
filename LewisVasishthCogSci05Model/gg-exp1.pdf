@@ -1,0 +1,224 @@
+%PDF-1.1
+%‚„œ”
+1 0 obj
+<<
+/CreationDate (D:20040710210611)
+/ModDate (D:20040710210611)
+/Title (R Graphics Output)
+/Producer (R 1.7.0)
+/Creator (R)
+>>
+endobj
+2 0 obj
+<<
+/Type /Catalog
+/Pages 3 0 R
+>>
+endobj
+4 0 obj
+<<
+/ProcSet [/PDF /Text]
+/Font << /F1 6 0 R /F2 7 0 R /F3 8 0 R /F4 9 0 R /F5 10 0 R /F6 11 0 R >>
+>>
+endobj
+5 0 obj
+<<
+/Type /Encoding
+/BaseEncoding /PDFDocEncoding
+/Differences [ 45/minus 96/quoteleft
+144/dotlessi /grave /acute /circumflex /tilde /macron /breve /dotaccent
+/dieresis /.notdef /ring /cedilla /.notdef /hungarumlaut /ogonek /caron /space]
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/Name /F1
+/BaseFont /Helvetica
+/Encoding 5 0 R
+>>
+endobj
+7 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/Name /F2
+/BaseFont /Helvetica-Bold
+/Encoding 5 0 R
+>>
+endobj
+8 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/Name /F3
+/BaseFont /Helvetica-Oblique
+/Encoding 5 0 R
+>>
+endobj
+9 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/Name /F4
+/BaseFont /Helvetica-BoldOblique
+/Encoding 5 0 R
+>>
+endobj
+10 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/Name /F5
+/BaseFont /Symbol
+>>
+endobj
+11 0 obj
+<<
+/Type /Font
+/Subtype /Type1
+/Name /F6
+/BaseFont /ZapfDingbats
+>>
+endobj
+12 0 obj
+<<
+/Type /Page
+/Parent 3 0 R
+/Contents 13 0 R
+/Resources 4 0 R
+>>
+endobj
+13 0 obj
+<<
+/Length 14 0 R
+>>
+stream
+1 J 1 j 10 M q
+Q q 106.85 145.73 612.86 359.42 re W n
+0.000 0.000 0.000 RG
+1.50 w
+[] 0 d
+137.70 225.69 m 310.55 286.52 l S
+325.19 295.09 m 501.37 450.08 l S
+515.39 451.55 m 689.48 353.53 l S
+0.000 0.000 0.000 rg
+BT
+/F6 1 Tf 2 Tr 8.98 0 0 8.98 125.99 219.71 Tm (l) Tj 0 Tr
+/F6 1 Tf 2 Tr 8.98 0 0 8.98 315.15 286.27 Tm (l) Tj 0 Tr
+/F6 1 Tf 2 Tr 8.98 0 0 8.98 504.30 452.67 Tm (l) Tj 0 Tr
+/F6 1 Tf 2 Tr 8.98 0 0 8.98 693.46 346.18 Tm (l) Tj 0 Tr
+ET
+Q q
+0.000 0.000 0.000 RG
+0.75 w
+[] 0 d
+106.85 145.73 m
+719.71 145.73 l
+719.71 505.15 l
+106.85 505.15 l
+106.85 145.73 l
+S
+Q q 36.00 57.60 720.00 518.40 re W n
+BT
+0.000 0.000 0.000 rg
+/F2 1 Tf 19.00 0.00 -0.00 19.00 128.17 533.75 Tm (Single-parameter model fit for  Grodner & Gibson \(2004\) Exp. 1) Tj
+/F2 1 Tf 17.00 0.00 -0.00 17.00 373.62 80.06 Tm (Condition) Tj
+/F2 1 Tf 0.00 17.00 -17.00 0.00 51.55 274.42 Tm (Milliseconds) Tj
+ET
+Q q
+0.000 0.000 0.000 RG
+0.75 w
+[] 0 d
+129.55 145.73 m 697.01 145.73 l S
+129.55 145.73 m 129.55 137.09 l S
+318.70 145.73 m 318.70 137.09 l S
+507.86 145.73 m 507.86 137.09 l S
+697.01 145.73 m 697.01 137.09 l S
+BT
+0.000 0.000 0.000 rg
+/F2 1 Tf 14.00 0.00 -0.00 14.00 82.49 114.62 Tm (SR:embedded) Tj
+/F2 1 Tf 14.00 0.00 -0.00 14.00 290.31 114.62 Tm (SR:main) Tj
+/F2 1 Tf 14.00 0.00 -0.00 14.00 460.02 114.62 Tm (OR:embedded) Tj
+/F2 1 Tf 14.00 0.00 -0.00 14.00 667.84 114.62 Tm (OR:main) Tj
+ET
+106.85 159.04 m 106.85 491.84 l S
+106.85 159.04 m 98.21 159.04 l S
+106.85 269.97 m 98.21 269.97 l S
+106.85 380.91 m 98.21 380.91 l S
+106.85 491.84 m 98.21 491.84 l S
+BT
+/F2 1 Tf 0.00 14.00 -14.00 0.00 86.11 147.36 Tm (300) Tj
+/F2 1 Tf 0.00 14.00 -14.00 0.00 86.11 258.30 Tm (350) Tj
+/F2 1 Tf 0.00 14.00 -14.00 0.00 86.11 369.23 Tm (400) Tj
+/F2 1 Tf 0.00 14.00 -14.00 0.00 86.11 480.16 Tm (450) Tj
+ET
+Q q 106.85 145.73 612.86 359.42 re W n
+0.000 0.000 0.000 RG
+1.50 w
+[ 4.50 7.50] 0 d
+137.47 260.10 m 310.78 335.31 l S
+327.16 340.54 m 499.40 376.90 l S
+516.35 377.09 m 688.52 344.78 l S
+1.50 w
+[] 0 d
+BT
+/F6 1 Tf 1 Tr 8.98 0 0 8.98 125.99 253.55 Tm (l) Tj 0 Tr
+/F6 1 Tf 1 Tr 8.98 0 0 8.98 315.15 335.64 Tm (l) Tj 0 Tr
+/F6 1 Tf 1 Tr 8.98 0 0 8.98 504.30 375.57 Tm (l) Tj 0 Tr
+/F6 1 Tf 1 Tr 8.98 0 0 8.98 693.46 340.07 Tm (l) Tj 0 Tr
+1.50 w
+[ 4.50 7.50] 0 d
+ET
+142.51 474.56 m 168.43 474.56 l S
+1.50 w
+[] 0 d
+142.51 457.28 m 168.43 457.28 l S
+BT
+0.000 0.000 0.000 rg
+/F1 1 Tf 14.00 0.00 -0.00 14.00 181.39 469.64 Tm (data) Tj
+/F1 1 Tf 14.00 0.00 -0.00 14.00 181.39 452.36 Tm (model) Tj
+ET
+Q
+endstream
+endobj
+14 0 obj
+2458
+endobj
+3 0 obj
+<<
+/Type /Pages
+/Kids [
+12 0 R
+]
+/Count 1
+/MediaBox [0 0 792 612]
+>>
+endobj
+xref
+0 15
+0000000000 65535 f 
+0000000016 00000 n 
+0000000158 00000 n 
+0000003767 00000 n 
+0000000207 00000 n 
+0000000324 00000 n 
+0000000580 00000 n 
+0000000676 00000 n 
+0000000777 00000 n 
+0000000881 00000 n 
+0000000989 00000 n 
+0000001067 00000 n 
+0000001151 00000 n 
+0000001233 00000 n 
+0000003746 00000 n 
+trailer
+<<
+/Size 15
+/Info 1 0 R
+/Root 2 0 R
+>>
+startxref
+3851
+%%EOF

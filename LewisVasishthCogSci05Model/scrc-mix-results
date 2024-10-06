@@ -1,0 +1,13 @@
+"Mixes of SC and RCs"
+"NO"
+"scrc-mix.pdf"
+condition, model, data
+"sc-rc:verb1",278.000, 0.000
+"sc-rc:verb2",210.000, 0.000
+"sc-rc:verb3",237.000, 0.000
+"rc-sc:verb1",163.000, 0.000
+"rc-sc:verb2",371.000, 0.000
+"rc-sc:verb3",238.000, 0.000
+"sc-sc:verb1",163.000, 0.000
+"sc-sc:verb2",211.000, 0.000
+"sc-sc:verb3",211.000, 0.000

@@ -1,0 +1,12 @@
+"Van Dyke & Lewis (2003) Exp. 4"
+"YES"
+"vl-exp4.pdf"
+condition, model, data
+"unambig-short:critical-verb",136.000,50.000
+"unambig-low-int:critical-verb",175.000, 6.000
+"unambig-low-int:region2",138.000,22.000
+"unambig-high-int:critical-verb",204.000,62.000
+"unambig-high-int:region2",134.571,19.000
+"ambig-short:critical-verb",184.000,48.000
+"ambig-low-int:critical-verb",248.000,92.000
+"ambig-high-int:critical-verb",279.000,161.000

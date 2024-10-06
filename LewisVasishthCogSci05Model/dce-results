@@ -1,0 +1,19 @@
+"Double center-embeddings"
+"NO"
+"dce.pdf"
+condition, model, data
+"ss-untensed:verb1",283.000, 0.000
+"ss-untensed:verb2",194.000, 0.000
+"ss-untensed:verb3",226.000, 0.000
+"ss-tensed:verb1",286.000, 0.000
+"ss-tensed:verb2",210.000, 0.000
+"ss-tensed:verb3",226.000, 0.000
+"sc-rc:verb1",290.000, 0.000
+"sc-rc:verb2",210.000, 0.000
+"sc-rc:verb3",238.000, 0.000
+"or-sr:verb1",170.000, 0.000
+"or-sr:verb2",377.000, 0.000
+"or-sr:verb3",227.000, 0.000
+"dor:verb1",309.000, 0.000
+"dor:verb2",403.000, 0.000
+"dor:verb3",261.000, 0.000

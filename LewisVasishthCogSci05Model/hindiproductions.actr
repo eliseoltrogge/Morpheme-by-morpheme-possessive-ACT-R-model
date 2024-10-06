@@ -1,0 +1,365 @@
+;; COMPLEMENTIZER
+
+(P set-retrieval-cues-input-COMP-subjectrelclausepronoun
+   =goal>
+      ISA               comprehend-sentence
+      state             "lexical-retrieval"
+   -  goal-cat          CP-goal
+   -  goal-cat          CP-DP-goal
+      goal-cat          =goal-cat
+;      position          =position
+   =lex-retrieval>
+      isa 	  	lexical-entry
+      word              =word
+      cat         	Csubj ; marks 
+==>
+   +lex>
+      isa               lexical-entry
+      =lex-retrieval
+   =goal>
+      state             "wm-retrieval"
+      cue1              DP
+      cue2              nil
+      cue3              nil
+      cue4              nil
+   +retrieval>
+      ISA           	syn-obj
+      cat               DP
+
+   !eval! (set-begin-time =word)
+)
+
+
+(P attach-CPsubj-as-modifier-of-retrieved-singular-DP
+   =goal>
+      ISA		comprehend-sentence
+      state             "wm-retrieval"
+      goal-cat          =goal-cat
+;      position		=position
+   =retrieval>
+      isa 	  	syn-obj
+      cat         	DP
+      number            sing
+      head-word         =subj-word
+      spec-of           =IP
+   =lex>
+      isa    		lexical-entry
+      cat         	Csubj            ; only difference from English "that"
+      finite            finite-lex
+      word              =word
+==>
+   =goal>
+      state             "read"
+      goal-cat          DP-and-transitive-I-bar-gapped-goal ; expecting a DP+TV
+                                                       ; was I-bar-gapped-goal 
+   +DPb>                                 
+      isa		syn-obj
+      cat		DP
+      filler            done                ;yes-filler
+      case		nom
+      coindexed-with	=retrieval
+  ;    spec-of           +CPb
+      head-word         =subj-word
+      subj-predicate    =IP
+;   +DPobjb>                             ; Not sure if I want to predict a DP
+;      isa		syn-obj
+;      cat		DP
+;;      filler            done                ;gap
+;      gap               yes-gap              ; is this how a DP is predicted?
+;      case		all-cases
+;      coindexed-with	=retrieval
+;  ;    spec-of           +CPb
+;      comp-of            +IPb                ; connects to IP??
+;;      head-word         =subj-word
+;;      subj-predicate    =IP
+   +IPb>
+      isa		syn-obj
+;      position		=position
+      cat		IP
+   ;   waiting-for-cat	wait-for-i-bar
+      waiting-for-finite  wait-for-finite
+      waiting-for-num   wait-for-sing
+      waiting-for-case     wait-for-acc ; SV: marks DPobject prediction
+      waiting-for-cat      wait-for-dp  ; SV
+      subcat               transitive   ; SV
+      spec              +DPb
+      finite            finite
+;      comp-of           +CPb
+;      comp              +DPobjb  ; strictly speaking the +VP should be here
+      number            sing
+      gap               spec
+      embedded          embedded
+      gapped            gapped
+      subj-word         =subj-word 
+      subj-predicate   =IP
+
+   !eval! (set-next-goal-category *IP* =goal-cat)
+   +CPb>
+      isa               syn-obj
+;      position		=position
+      cat               CP
+      head              =word
+      modif-of		=retrieval
+      spec              +DPB
+      comp              +IPb
+  !eval! (set-next-goal-category *CP* =goal-cat)
+
+   =retrieval>
+      modifier          +CPb
+   -retrieval>
+
+ !eval! (attach-message =subj-word "modifier" =word)  
+)
+
+(P set-retrieval-cues-goal-DP-and-transitive-I-bar-gapped-input-DET-acc
+   =goal>
+      ISA               comprehend-sentence
+      state             "lexical-retrieval"
+      goal-cat          DP-and-transitive-I-bar-gapped-goal
+;      position          =position
+   =lex-retrieval>
+      isa 	  	lexical-entry
+      word              =word
+      cat         	DET
+;      case              acc ; SV: adding this condition causes error; 
+                             ; don't understand why
+==>
+   +lex>
+      isa               lexical-entry
+      =lex-retrieval
+   =goal>
+      state             "wm-retrieval"
+      cue1              wait-for-N-and-transitive-I-bar
+      cue2              embedded
+      cue3              gapped
+      cue4              nil
+   +retrieval>                         ; This is the new embedded IP
+      ISA           	syn-obj
+    ;  waiting-for-cat   wait-for-I-bar
+      waiting-for-case     wait-for-acc ; SV: DPobject prediction
+      waiting-for-cat      wait-for-dp  ; SV
+      subcat            transitive
+      embedded          embedded
+      gapped            gapped
+;      position          =position
+   !eval! (set-begin-time =word)
+)
+
+;this fires right after the object's "the"
+(P attach-DP-as-object-of-predicted-transitive-IP-gapped-hindi
+   =goal>
+      ISA               comprehend-sentence
+      state             "wm-retrieval"
+      goal-cat          DP-and-transitive-I-bar-gapped-goal ; I-bar-gapped-goal
+;      position          =position
+   =retrieval>
+      isa 	  	syn-obj
+      cat		IP
+      head              nil
+      waiting-for-cat 	wait-for-dp
+      spec              =empty-op
+   =lex>
+      isa		lexical-entry
+      cat		DET       
+      word              =word
+;      case		acc    ;THE CASE MARKING ON THE DET
+      gender		all-genders-lex
+      number		sing-plural-lex   ; need to change this to sing: "us"
+==>
+   =goal>
+      state             "read"
+      goal-cat          NP-goal-and-transitive-I-bar
+   =empty-op>
+      isa               syn-obj             
+ ;     filler            yes-filler          ;reinstate filler as active   
+                                            ; (needed for semantic integration)
+   +DPb>
+      isa               syn-obj
+;      position          =position
+      cat               DP
+      case		acc ; was nom
+      head              =word
+;      spec-of		=retrieval ; it's the object of the VP
+      gender		all-genders
+      number		sing-plural
+      waiting-for-case  wait-for-acc  ; e.g., laRke-ko
+      waiting-for-cat   wait-for-NP
+      waiting-for-num   wait-for-sing ; because it's us 
+      next-goal         next-I-bar-gapped-goal
+   =retrieval>
+;      position          =position
+      number		sing-plural
+      comp		+DPb
+      gap               open
+   -retrieval>
+)
+
+(P set-retrieval-cues-goal-NP-and-transitive-I-bar-input-N
+   =goal>
+      ISA               comprehend-sentence
+      state             "lexical-retrieval"
+      goal-cat          NP-goal-and-transitive-I-bar
+;      position          =position
+   =lex-retrieval>
+      isa 	  	lexical-entry
+      word              =word
+      cat         	N
+      number	        sing-lex
+==>
+   +lex>
+      isa               lexical-entry
+      =lex-retrieval
+   =goal>
+      state             "wm-retrieval"
+      cue1              wait-for-NP
+      cue2              nil
+      cue3              nil
+      cue4              nil
+   +retrieval>
+      ISA           	syn-obj
+      waiting-for-cat   wait-for-NP
+      waiting-for-case  wait-for-acc
+      waiting-for-num   wait-for-sing
+;      position          =position
+
+   !eval! (set-begin-time =word)
+)
+
+
+(P attach-object-NP-singular-any-case-gapped-hindi
+   =goal>
+      ISA               comprehend-sentence
+      state             "wm-retrieval"
+      goal-cat          NP-goal-and-transitive-I-bar
+;      position		=position
+   =retrieval>                     
+      isa 	  	syn-obj
+;      comp 		none
+      cat         	DP
+      case        	acc ; was nom
+      number		sing-plural ; need to change this to singular
+      gender	        =gender
+      next-goal         next-I-bar-gapped-goal
+      spec-of           none ; was =IP
+      waiting-for-case  wait-for-acc
+      waiting-for-cat   wait-for-NP
+      waiting-for-num   wait-for-sing
+   =lex>
+      isa               lexical-entry
+      cat               N
+      word              =word
+      case        	all-cases-lex
+      number		sing-lex
+      gender	        all-genders-lex
+      subcat            intransitive-lex
+;   =IP>                                          ;; HACK: this is not legal
+;      isa               syn-obj
+;      finite            finite
+==>
+   =goal>
+      state             "read"
+      goal-cat          I-bar-goal
+      cue1              Wait-for-V  ; changed from wait-for-NP 
+      language          "hindi"
+   +NPb>
+      isa               syn-obj
+;      position          =position
+      cat               NP
+      head              =word
+      number		sing
+      case              acc  ; was nom
+      gender            =gender
+      subcat            intransitive
+      comp-of           =retrieval 
+   =retrieval>
+      head-word         =word
+      comp              +NPb
+      number            sing
+      waiting-for-case	discharged-case
+      waiting-for-cat	discharged-cat
+      waiting-for-num   discharged-num
+;   =IP>                                       ;; This may not be legal
+;      isa               syn-obj               
+;      waiting-for-cat   wait-for-I-bar         ;; purpose: to enable retrieval
+;      waiting-for-num   wait-for-sing
+;      waiting-for-finite wait-for-finite
+;      number            sing
+;      obj-word         =word                 ; why is this needed?
+)
+
+
+;; need to add Hindi-specific code for the verbs
+
+; set-retrieval-cues-goal-I-bar-input-V is OK as-is
+
+(P set-retrieval-cues-goal-I-bar-input-V-hindi
+   =goal>
+      ISA               comprehend-sentence
+      state             "lexical-retrieval"
+      goal-cat          I-bar-goal
+      language          "hindi"
+;      position          =position
+   =lex-retrieval>
+      isa 	  	lexical-entry
+      word              =word
+      cat         	V
+      number	        sing-plural-lex
+      finite            finite-lex
+==>
+   +lex>
+      isa               lexical-entry
+      =lex-retrieval
+   =goal>
+      state             "wm-retrieval"
+      cue1              wait-for-I-bar
+      cue2              nil
+      cue3              nil
+      cue4              nil
+   +retrieval>
+      ISA           	  syn-obj
+;      waiting-for-cat     wait-for-I-bar
+      waiting-for-finite  wait-for-finite
+      embedded          embedded
+;     position            =position
+
+   !eval! (set-begin-time =word)
+)
+
+
+
+
+(P set-retrieval-cues-goal-I-bar-input-Adj
+   =goal>
+      ISA               comprehend-sentence
+      state             "lexical-retrieval"
+      goal-cat          I-bar-goal
+      language          "hindi"
+;      position          =position
+   =lex-retrieval>
+      isa 	  	lexical-entry
+      word              =word
+      cat         	ADJ
+==>
+   +lex>
+      isa               lexical-entry
+      =lex-retrieval
+   =goal>
+      state             "wm-retrieval"
+      cue1              wait-for-AdjP
+      cue2              nil
+      cue3              nil
+      cue4              nil
+   +retrieval>
+      ISA           	  syn-obj
+;      waiting-for-cat     wait-for-I-bar
+      waiting-for-finite  wait-for-finite
+      embedded          embedded
+;     position            =position
+   !eval! (set-begin-time =word)
+)
+
+
+
+
+; !eval! (add-reference (wme-references (get-wme =subj-pred)))
+;!eval! (boost-message =subj-pred)

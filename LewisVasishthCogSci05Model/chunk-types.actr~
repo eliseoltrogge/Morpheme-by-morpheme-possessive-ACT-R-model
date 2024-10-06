@@ -1,0 +1,79 @@
+;;;-*-LISP-*-
+
+
+(chunk-type comprehend-sentence
+	    state
+	    (goal-cat  IP-goal)
+;	    goal-subcat
+	    cue1
+	    cue2
+	    cue3
+	    cue4
+)
+
+
+
+(chunk-type lexical-entry
+            word
+            cat
+	    (subcat intransitive-lex)
+
+            number
+            case
+            person
+	    gender
+
+            tense
+            voice
+            finite
+
+;	    (waiting-for-case  none)
+;	    (waiting-for-cat   none)
+;	    (waiting-for-finite  none)
+)
+
+
+(chunk-type syn-obj
+            cat
+	    subcat
+
+	    next-goal
+
+	    head
+	    head-word   ; purely for trace information
+	    subj-word   ; purely for trace information
+
+	    subj-predicate  
+
+	    (waiting-for-finite none)
+	    (waiting-for-case none)
+	    (waiting-for-num none)
+	    (waiting-for-cat none)
+	    (waiting-for-cat2 none)
+	    (waiting-for-cat3 none)
+
+	    case
+            gender
+            number
+	    finite
+            tense
+	    embedded
+	    gapped
+
+            (comp none)
+            (modifier none)
+            (spec none)
+
+            (comp-of none)
+            (modif-of none)
+	    (spec-of none)
+	    (cp-spec-of none)
+
+	    coindexed-with
+	    attached
+	    (gap none)
+	    filler
+)
+
+
+

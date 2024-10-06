@@ -1,0 +1,11 @@
+"Consecutive PP attachments to NPs"
+"NO"
+"recency.pdf"
+condition, model, data
+"recency:pp1",165.000, 0.000
+"recency:pp2",175.000, 0.000
+"recency:pp3",183.000, 0.000
+"recency:pp4",189.000, 0.000
+"recency:pp5",195.000, 0.000
+"recency:pp6",200.000, 0.000
+"recency:pp7",205.000, 0.000

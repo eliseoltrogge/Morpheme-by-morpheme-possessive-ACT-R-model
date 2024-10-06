@@ -1,0 +1,10 @@
+"Grodner & Gibson (2004) Exp. 2"
+"YES"
+"gg-exp2.pdf"
+condition, model, data
+"NO:main",138.000,375.000
+"PP:main",158.000,385.000
+"RC:main",176.000,382.000
+"NO:embedded",251.000,475.000
+"PP:embedded",300.000,515.000
+"RC:embedded",339.000,568.000

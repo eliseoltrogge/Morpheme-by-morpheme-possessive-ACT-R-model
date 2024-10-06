@@ -1,0 +1,127 @@
+;;;-*-LISP-*-
+
+(add-dm
+ (top-goal isa comprehend-sentence
+	     )
+)
+
+
+(add-dm
+  (all-cases isa chunk)
+;  (none  isa chunk)
+
+  (nom  isa chunk)
+  (acc  isa chunk)
+  (gen  isa chunk)
+  (dat  isa chunk)
+  (oblique isa chunk)
+
+  (wait-for-acc isa chunk)
+  (wait-for-nom isa chunk)
+  (wait-for-dat isa chunk)
+  (wait-for-gen isa chunk)
+  (wait-for-oblique isa chunk)
+  (wait-for-all-cases isa chunk)
+  (discharged-case isa chunk)
+
+  (N isa chunk)
+  (V isa chunk)
+  (I isa chunk)
+  (P isa chunk)
+  (C isa chunk)
+  (DET isa chunk)
+  (ADV isa chunk)
+  (ADJ isa chunk)
+
+  (DP isa chunk)
+  (IP isa chunk)
+  (PP isa chunk)
+  (NP isa chunk)
+  (VP isa chunk)
+  (NP-VP isa chunk)
+
+  (wait-for-DP isa chunk)
+  (wait-for-IP isa chunk)
+  (wait-for-PP isa chunk)
+
+  (discharged-cat isa chunk)
+
+  (wait-for-finite isa chunk)
+  (discharged-finite isa chunk)
+
+  (tensed  isa chunk)
+  (past    isa chunk)
+  (future    isa chunk)
+  (past-participle isa chunk)
+  (passive isa chunk)
+
+  (1stPers isa chunk)
+  (2ndPers isa chunk)
+  (3rdPers isa chunk)
+
+  (sing isa chunk)
+  (plural isa chunk)
+  (sing-plural isa chunk)
+  (wait-for-sing isa chunk)
+  (wait-for-plural isa chunk)
+  (wait-for-sing-plural isa chunk)
+
+  (fem isa chunk)
+  (masc isa chunk)
+  (fem-masc isa chunk)
+  (all-genders isa chunk))
+
+
+(SetSimilarities
+   (wait-for-DP wait-for-IP -0.8)
+ 
+   (all-cases nom -0.2)
+   (all-cases acc -0.2)
+   (all-cases dat -0.2)
+   (all-cases oblique -0.2)
+
+   (wait-for-all-cases wait-for-nom -0.2)
+   (wait-for-all-cases wait-for-acc -0.2)
+   (wait-for-all-cases wait-for-dat -0.2)
+   (wait-for-all-cases wait-for-oblique -0.8)
+
+   (none nom -0.2)
+   (none acc -0.2)
+   (none dat -0.2)
+   (none gen -0.2)
+   (none oblique -0.2)
+
+   (none wait-for-nom -0.8)
+   (none wait-for-acc -0.8)
+   (none wait-for-dat -0.8)
+   (none wait-for-gen -0.8)
+   (none wait-for-oblique -0.8)
+   (none wait-for-all-cases -0.8)
+
+   (none wait-for-finite -0.8)
+
+   (sing-plural sing -0.2)
+   (sing sing-plural -0.2)
+   (plural sing-plural -0.2)
+
+   (wait-for-sing-plural wait-for-sing -0.2)
+   (wait-for-sing-plural wait-for-plural -0.2)
+
+   (fem-masc fem -0.2)
+   (fem-masc masc -0.2)
+   (all-genders fem -0.2)
+   (all-genders masc -0.2)
+
+   (tensed past -0.2)
+   (past tensed -0.2)
+
+   (NP NP-VP 0)
+   (VP NP-VP 0)
+
+   (none N -0.99)
+   (none V -0.99)
+   (none Adj -0.99)
+   (none P -0.99)
+   (none C -0.99)
+   (none Adv -0.99))
+

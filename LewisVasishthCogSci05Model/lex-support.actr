@@ -1,0 +1,247 @@
+;;;-*-LISP-*-
+
+;; ===================================================================
+;;    ACT-R Sentence Parsing Model
+;;      
+;;       Functions to make it easy to add to the lexicon.
+;;  
+;;       This model is described in the Cognitive Science article
+;;       Lewis & Vasisth (2004).  
+;; 
+;;    Version 2.0
+;;    June 2 2004
+;; ===================================================================
+
+
+(defvar *case-mappings* '((all . all-cases-lex)))
+
+(defvar *tense-mappings* '((past . past-lex)))
+
+(defvar *finite-mappings* '((finite . finite-lex) (infinite . infinite-lex)))
+
+(defvar *number-mappings* '((singular . sing-lex) (singular-plural . sing-plural-lex)))
+
+(defvar *gender-mappings* '((all . all-genders-lex) (feminine . fem-lex)
+			  (masculine . masc-lex)))
+
+(defvar *subcat-mappings* '((intransitive . intransitive-lex)
+    (transitive-CP-finite .  transitive-CP-finite-lex)
+    (transitive-DP . transitive-DP-lex)
+    (transitive-CP-DP-finite . transitive-CP-DP-finite-lex)
+    (gerund . gerund-lex)
+    (past-participle-transitive . past-participle-transitive-lex)))
+
+
+(defmacro noun(word &key (number 'singular)
+		    (case   'all)
+		    (gender 'all)
+		    (cat    'N)
+		    (subcat 'intransitive)
+		    id)
+  
+  (let ((num (cdr (assoc number *number-mappings*)))
+	(case (cdr (assoc case *case-mappings*)))
+	(subcat (cdr (assoc subcat *subcat-mappings*)))
+	(chunk-id id)
+	(gender (cdr (assoc gender *gender-mappings*))))
+
+    `(progn
+       (add-dm
+	(,chunk-id isa lexical-entry
+		   word         ,word
+		   cat          ,cat
+		   number       ,num
+		   case         ,case
+		   subcat       ,subcat
+		   gender       ,gender))
+
+       (set-base-levels (,chunk-id 100))
+
+       ,(create-lexical-production word)))
+    )
+
+
+(defmacro verb(word &key (number 'singular-plural)
+		    (tense 'past)
+		    (finite 'finite)
+		    (cat    'V)
+		    (subcat 'transitive-DP)
+		    id)
+  
+  (let ((num (cdr (assoc number *number-mappings*)))
+	(subcat (cdr (assoc subcat *subcat-mappings*)))
+	(tense (cdr (assoc tense *tense-mappings*)))
+	(finite (cdr (assoc finite *finite-mappings*)))
+	(chunk-id id))
+
+    `(progn
+       (add-dm
+	(,chunk-id isa lexical-entry
+		   word         ,word
+		   cat          ,cat
+		   tense        ,tense
+		   finite       ,finite
+		   number       ,num
+		   subcat       ,subcat))
+
+       (set-base-levels (,chunk-id 100))
+
+       ,(create-lexical-production word)))
+    )
+
+
+
+(defmacro det(word &key (number 'singular-plural)
+		    (case   'all)
+		    (gender 'all)
+		    (cat    'DET)
+		    id)
+  
+  (let ((num (cdr (assoc number *number-mappings*)))
+	(case (cdr (assoc case *case-mappings*)))
+	(chunk-id id)
+	(gender (cdr (assoc gender *gender-mappings*))))
+
+    `(progn
+       (add-dm
+	(,chunk-id isa lexical-entry
+		   word         ,word
+		   cat          ,cat
+		   number       ,num
+		   case         ,case
+		   gender       ,gender))
+
+       (set-base-levels (,chunk-id 100))
+
+       ,(create-lexical-production word)))
+    )
+
+
+
+(defmacro comp(word &key (cat    'C)
+		    (finite 'finite)
+		    id)
+  
+  (let ((finite (cdr (assoc finite *finite-mappings*)))
+	(chunk-id id))
+
+    `(progn
+       (add-dm
+	(,chunk-id isa lexical-entry
+		   word         ,word
+		   cat          ,cat
+		   finite       ,finite
+		   subcat       nil))
+
+       (set-base-levels (,chunk-id 100))
+
+       ,(create-lexical-production word)))
+    )
+
+
+
+(defmacro inf(word &key (cat    'inf)
+		    (finite 'infinite)
+		    id)
+  
+  (let ((finite (cdr (assoc finite *finite-mappings*)))
+	(chunk-id id))
+
+    `(progn
+       (add-dm
+	(,chunk-id isa lexical-entry
+		   word         ,word
+		   cat          ,cat
+		   finite       ,finite
+		   subcat       nil))
+
+       (set-base-levels (,chunk-id 100))
+
+       ,(create-lexical-production word)))
+    )
+
+
+
+
+(defmacro prep(word &key (cat    'P)
+		    (subcat 'transitive-DP)
+		    id)
+  
+  (let ((subcat (cdr (assoc subcat *subcat-mappings*)))
+	(chunk-id id))
+
+    `(progn
+       (add-dm
+	(,chunk-id isa lexical-entry
+		   word         ,word
+		   cat          ,cat
+		   subcat       ,subcat))
+
+       (set-base-levels (,chunk-id 100))
+
+       ,(create-lexical-production word)))
+    )
+
+
+
+(defmacro adj(word &key (number 'singular-plural)
+		    (case   'all)
+		    (gender 'all)
+		    (cat    'adj)
+		    (subcat 'intransitive)
+		    id)
+  
+  (let ((num (cdr (assoc number *number-mappings*)))
+	(case (cdr (assoc case *case-mappings*)))
+	(subcat (cdr (assoc subcat *subcat-mappings*)))
+	(chunk-id id)
+	(gender (cdr (assoc gender *gender-mappings*))))
+
+    `(progn
+       (add-dm
+	(,chunk-id isa lexical-entry
+		   word         ,word
+		   cat          ,cat
+		   number       ,num
+		   case         ,case
+		   subcat       ,subcat
+		   gender       ,gender))
+
+       (set-base-levels (,chunk-id 100))
+
+       ,(create-lexical-production word)))
+    )
+
+
+
+
+
+(defun create-lexical-production(word)
+  (let*
+      ((wordstr (string-downcase word))
+       (pname (intern (concatenate 'string "lexical-retrieval-request-" wordstr))))
+      
+    `(P ,pname
+	  =goal>
+	  isa            	comprehend-sentence
+	  state		"attending"
+	  =visual>
+	  ISA         	text
+	  value       	,wordstr
+	  ==>
+	  =goal>
+	  state       	"lexical-retrieval"
+	  cue1              ,word
+	  cue2              nil
+	  cue3              nil
+	  cue4              nil
+	  -visual-location>
+	  +lex-retrieval>
+	     ISA         	lexical-entry
+             word        	,word
+	  
+	  !eval! (word-message ,wordstr)))
+  )
+
+
+

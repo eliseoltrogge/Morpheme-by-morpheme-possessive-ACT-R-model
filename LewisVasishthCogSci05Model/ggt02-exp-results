@@ -1,0 +1,12 @@
+"Grodner, Gibson & Tunstall (2002)"
+"YES"
+"ggt02-exp.pdf"
+condition, model, data
+"sc:region3-4",145.750,-27.500
+"sc:region5",144.000,-40.200
+"sc:region6",150.000,-29.700
+"sc:region7",161.333,-18.800
+"rc:region3-4",187.000,19.350
+"rc:region5",151.000, 7.200
+"rc:region6",150.000,18.700
+"rc:region7",239.333,79.200

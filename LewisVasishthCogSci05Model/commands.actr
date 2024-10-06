@@ -1,0 +1,50 @@
+;;;-*-LISP-*-
+
+(setf *actr-enabled-p* t)
+
+(goal-focus top-goal)
+
+(pm-reset) 
+
+(pm-set-visloc-default :attended new :screen-x lowest)
+
+(pm-set-params :show-focus nil
+	       :trace-modules t
+	       )
+       
+
+(sgp      :ga 1           ; goal activation
+	  :pm t           ; partial matching
+
+;	  :blc -0.3       ; base level constant (2 was used in Raluca's  model)	  
+  
+;      	  :blc 0        ; base level constant (2 was used in Raluca's
+
+	  :bll 0.5        ; turn decay on
+	  :ol nil         ; use full learning rule, not approximation
+
+	  :ans 0          ; activation noise
+;	  :ans .15        ; activation noise
+	  
+	  :rt -1.5        ; retrieval threshold
+	  :md -10.0       ; maximum difference penalty
+;	  :mas 3          ; maximum associative strength
+
+	  :mas 1.5        ; maximum associative strength
+			  ; (3 was used in Sternberg model)
+;          :lf .25         ; latency factor
+	                  ; (.45 was used in Raluca's model)
+
+;         :lf .16	  
+          :lf .14         ; latency factor
+
+	  :lt t           ; latency trace
+;	  :lt nil           ; latency trace
+
+	  :act nil        ; activation trace
+	  :ct t           ; cycle trace
+;	  :ct nil         ; cycle trace
+
+	  :pmt nil        ; partial matching trace
+	  :dmt nil        ; declarative memory trace
+     )

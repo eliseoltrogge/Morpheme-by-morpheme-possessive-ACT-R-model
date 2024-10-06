@@ -1,0 +1,154 @@
+;;;-*-LISP-*-
+
+;; ===================================================================
+;;    ACT-R Sentence Parsing Model:  PATCHES to ACT-R 5.0
+;;
+;;      
+;;       This model is described in the Cognitive Science article
+;;       Lewis & Vasisth (2004).  
+;; 
+;;    Version 2.0
+;;    May 21 2004
+;; ===================================================================
+
+
+;; The modification to interpret-value lets us refer to newly created
+;; chunks in the right-hand-side of a production, by using the
+;; "+<buffer-name>" syntax.
+
+(defmacro interpret-value (action)
+  "Interpret a slot value description in a number of ways."
+  `(case (action-dispatch ,action)
+     (:literal
+        (let ((val (action-value ,action)))
+
+	  (if (wmep val)
+;(eq 'wme (type-of val))        ;; if this is a wme AND
+                                             ;; a buffer, return the
+                                             ;; buffer contents
+	      (let ((buf-var (cdr (assoc (wme-name val) *buffer-keys*))))
+		(if buf-var
+		    (eval buf-var)
+		  val))
+	    val)))
+     (:stack (instantiation-variable *instantiation* (action-value ,action)))
+     (:eval  (get-wme-or-constant (funcall (action-value ,action))))
+     )
+  )
+
+
+(defun get-wme-or-constant (name)
+  "Returns the wme corresponding to name, or the name if none.  Detects nil.
+   Now automatically defines non-wme symbols as of the default type
+   wme."
+
+;; (format t "
+;; >>>>> Getting-wme-or-constant for name ~A.
+;; " name)
+
+  (cond ((null name) nil)
+         ((eq name t) t)  ;; t, like nil, is also given special status
+         ((wmep name) name)
+	 ((eval (cdr (assoc name *buffer-keys*))))
+         ((get-wme name))
+         ((symbolp name)
+;          (signal-output *command-trace* "UNDEFINED CHUNK ~S IS BEING CREATED AS OF DEFAULT TYPE CHUNK."
+;                       name)
+          (create-wme name (cdar *declarative-memory*)))
+         (t name)))
+
+
+
+
+
+;; Nothing is changed in this function, but because it calls the
+;; macro above it must be redefined.
+
+(defun modify-old-wme (arguments)
+  "Set new slot values of an existing wme."
+  (let* ((wme (instantiation-variable *instantiation* (pop arguments)))
+         (type (pop arguments)))
+    (signal-output *dm-trace* "Modifying CHUNK ~S." wme)
+    (if (subtype (wme-type wme) type)
+      (set-slots wme (pop arguments))
+      (signal-warn "CHUNK ~S IS NOT OF TYPE ~S." wme type))
+    (if (eq wme *wmfocus*)
+        (update-activation-spread)
+        (decf (wme-spread-stamp wme) 1))))
+
+
+
+;; Nothing is changed in this function either, but it must be
+;; redefined because it calls the macro above.
+
+(defun create-new-wme (arguments)
+  "Creates a new wme, sets its slot values and sets its stack binding."
+  (let* ((wme-index (pop arguments))
+         (wme-name (safe-gentemp (symbol-name (pop arguments))))
+         (wme-type (pop arguments))
+         (wme (create-wme wme-name wme-type)))
+    (signal-output *dm-trace* "Creating CHUNK ~A." wme-name)
+    (setf (instantiation-variable *instantiation* wme-index) wme)
+    (set-slots wme (pop arguments))))
+
+
+
+;; The modification to create-buffer-chunk lets us stuff a chunk into
+;; a buffer in the same way that a chunk can be stuffed in the goal
+;; buffer.  This is a hack at present: it tests that the chunk
+;; specification is a list of length 3, which is normally not legal,
+;; and assumes that the list is of the form (isa <chunk-type>
+;; <chunk-name>), where chunk-name is the name of the chunk to be
+;; stuffed into the buffer.  The "isa <chunk-type> is thus ignored,
+;; but must still be included to avoid syntax errors.
+
+(defun create-buffer-chunk (arguments)
+  "Arguments are a list containing the name of the buffer, the global variable
+   holding the buffer contents, then the chunk description with isa and slots.
+   THIS LAST ARGUMENT MUST BE FUNCALLED TO RESOLVE THE VALUE OF PRODUCTION VARIABLES."
+
+  (let* ((name (pop arguments))
+         (buffer (pop arguments))
+         (chunk (new-name-fct name))
+         (specs (funcall (pop arguments))))
+    (signal-output *dm-trace* "Creating CHUNK ~A in BUFFER ~A with specs ~S."
+                   chunk name specs)
+
+    (if (eq 3 (length specs))
+	(let ((chunk (third specs)))
+	  (when *verbose* (format t "
+
+Stuffing BUFFER ~A with CHUNK ~A.
+" name chunk))
+	  (setf (symbol-value buffer) (get-wme chunk)))
+      (progn
+	(add-dm-fct (list (cons chunk specs)))
+	(setf (symbol-value buffer) (get-wme chunk))))
+    ))
+
+
+
+
+;; These are support functions that create the associative list of
+;; buffer keys (e.g., +DPb) and buffer variable names (e.g., *DP*).
+
+(defun +bufname (term)
+"maps term to +term"
+    (let* ((string  (string-sym term))
+           (bound (length string))
+           (ans (make-string (+ 1 bound))))
+      (setf (aref ans 0) #\+)
+      (do ((count 0 (1+ count)))
+          ((equal count bound) (intern ans))
+        (setf (aref ans (+ count 1)) (aref string count)))))
+
+(defun make-key-pair (buf)
+  (let ((buf-name (first buf))
+	(buf-var (second buf)))
+
+    (cons (+bufname buf-name) buf-var))
+  )
+
+
+(setf *buffer-keys* (mapcar 'make-key-pair *buffers*))
+
